@@ -1,6 +1,7 @@
 package se.omegapoint.web.signencrypthashapp.service.hash;
 
 public enum Hashes {
+    MD5("MD5"),
     SHA1("SHA-1"),
     SHA224("SHA-224"),
     SHA256("SHA-256"),

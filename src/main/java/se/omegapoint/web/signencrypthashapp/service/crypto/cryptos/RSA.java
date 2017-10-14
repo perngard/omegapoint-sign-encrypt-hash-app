@@ -1,6 +1,6 @@
-package se.omegapoint.web.signencrypthashapp.service.encrypt.crypto;
+package se.omegapoint.web.signencrypthashapp.service.crypto.cryptos;
 
-import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
+import se.omegapoint.web.signencrypthashapp.vo.CryptoVO;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -17,7 +17,7 @@ public class RSA {
 
     boolean correct = false;
 
-    public RSA(EncryptVO encryptVO) throws NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException {
+    public RSA(CryptoVO cryptoVO) throws NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException {
     }
 
     public boolean isCorrect() {

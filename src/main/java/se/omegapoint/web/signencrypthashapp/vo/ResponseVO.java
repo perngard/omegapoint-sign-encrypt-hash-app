@@ -4,6 +4,7 @@ public class ResponseVO {
     String compare;
     String hex;
     String base64;
+    String text;
 
     public String getCompare() {
         return compare;
@@ -27,5 +28,13 @@ public class ResponseVO {
 
     public void setBase64(String base64) {
         this.base64 = base64;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

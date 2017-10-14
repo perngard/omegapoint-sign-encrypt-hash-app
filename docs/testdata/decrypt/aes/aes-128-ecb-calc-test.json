@@ -1,0 +1,8 @@
+{
+  "secret" : "OPerationHack",
+  "algorithm" : "AES",
+  "keyLength" : "128",
+  "type" : "ECB",
+  "padding" : "PKCS5Padding",
+  "cipherText" : "ebd12a2802029ee60b30545d7e32eb59"
+}

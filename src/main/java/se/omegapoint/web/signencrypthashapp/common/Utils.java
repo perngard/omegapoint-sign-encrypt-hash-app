@@ -1,18 +1,9 @@
 package se.omegapoint.web.signencrypthashapp.common;
 
-import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.IvParameterSpec;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
-import java.security.*;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.List;
 
 public class Utils {
 
@@ -36,8 +27,16 @@ public class Utils {
         return bytes;
     }
 
+    public static byte[] hextoBytes(String hex){
+        return hextoBytes(hex, hex.length()/2);
+    }
+
     public static String hextoBase64String(String hex){
         return Base64.getEncoder().encodeToString(hextoBytes(hex, hex.length()/2));
+    }
+
+    public static String base64Decoder(String base64) throws UnsupportedEncodingException {
+        return new String(Base64.getDecoder().decode(base64),"UTF-8");
     }
 
     public static String toBase64String(byte[] hex){

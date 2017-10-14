@@ -3,6 +3,7 @@ package se.omegapoint.web.signencrypthashapp.service.hash;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import se.omegapoint.web.signencrypthashapp.common.TextType;
 import se.omegapoint.web.signencrypthashapp.common.Utils;
+import se.omegapoint.web.signencrypthashapp.service.hmac.HMacs;
 import se.omegapoint.web.signencrypthashapp.vo.HashVO;
 
 import java.nio.charset.StandardCharsets;
@@ -13,8 +14,6 @@ import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class HashCalculator {
-
-    private final List<String> algorithms = Arrays.asList("SHA-1", "SHA-224", "SHA-256", "SHA-384", "SHA-512");
 
     String hex;
     String base64;
@@ -40,7 +39,7 @@ public class HashCalculator {
 
         String algorithm = hashVO.getAlgorithm();
 
-        if (algorithms.stream().anyMatch(s -> s.equals(algorithm))) {
+        if (Arrays.stream(Hashes.values()).anyMatch(s -> s.name().equalsIgnoreCase(algorithm))) {
 
             System.out.println("algorithm: "+algorithm);
             MessageDigest md = MessageDigest.getInstance(algorithm);

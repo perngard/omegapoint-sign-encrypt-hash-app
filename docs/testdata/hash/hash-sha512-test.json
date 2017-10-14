@@ -1,5 +1,5 @@
 {
   "text" : "This is a test",
-  "algorithm" : "SHA-512",
+  "algorithm" : "SHA512",
   "compareValue" : "a028d4f74b602ba45eb0a93c9a4677240dcf281a1a9322f183bd32f0bed82ec72de9c3957b2f4c9a1ccf7ed14f85d73498df38017e703d47ebb9f0b3bf116f69"
 }

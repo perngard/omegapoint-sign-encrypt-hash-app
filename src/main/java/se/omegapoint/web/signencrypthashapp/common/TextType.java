@@ -1,7 +1,7 @@
 package se.omegapoint.web.signencrypthashapp.common;
 
 public enum TextType {
-    PLAIN("PLAIN"),
+    TEXT("TEXT"),
     BASE64("BASE64"),
     HEX("HEX"),
     ;

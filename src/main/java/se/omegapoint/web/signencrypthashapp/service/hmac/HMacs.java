@@ -1,6 +1,7 @@
 package se.omegapoint.web.signencrypthashapp.service.hmac;
 
 public enum HMacs {
+    HMACMD5("HmacMD5"),
     HMACSHA1("HmacSHA1"),
     HMACSHA256("HmacSHA256"),
     ;

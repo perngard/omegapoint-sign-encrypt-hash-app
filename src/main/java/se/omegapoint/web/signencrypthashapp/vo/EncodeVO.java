@@ -1,8 +1,9 @@
 package se.omegapoint.web.signencrypthashapp.vo;
 
-public class EncoderVO {
+public class EncodeVO {
 
     private String text;
+    private String encoded;
     private String type;
     private String compareValue;
 
@@ -12,6 +13,14 @@ public class EncoderVO {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getEncoded() {
+        return encoded;
+    }
+
+    public void setEncoded(String encoded) {
+        this.encoded = encoded;
     }
 
     public String getType() {

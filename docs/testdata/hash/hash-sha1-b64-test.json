@@ -1,6 +1,6 @@
 {
   "text" : "This is a test",
-  "algorithm" : "SHA-1",
+  "algorithm" : "SHA1",
   "compareType" : "BASE64",
   "compareValue" : "pU2I4GYS2CC8O+cod8dPJXtWGxk="
 }

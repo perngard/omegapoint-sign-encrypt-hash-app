@@ -1,0 +1,6 @@
+{
+  "text" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "HmacMD5",
+  "compareValue" : "796d6ef25c0121a7a840b261f22b8160b625a5de"
+}

@@ -3,30 +3,40 @@ package se.omegapoint.web.signencrypthashapp.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import se.omegapoint.web.signencrypthashapp.service.decode.Decoder;
 import se.omegapoint.web.signencrypthashapp.service.encode.Encoder;
-import se.omegapoint.web.signencrypthashapp.service.encrypt.CryptoHandler;
+import se.omegapoint.web.signencrypthashapp.service.crypto.CryptoHandler;
 import se.omegapoint.web.signencrypthashapp.error.ErrorResponse;
 import se.omegapoint.web.signencrypthashapp.exception.GenericControlException;
 import se.omegapoint.web.signencrypthashapp.service.hash.HashCalculator;
 import se.omegapoint.web.signencrypthashapp.service.hmac.HMacCalculator;
-import se.omegapoint.web.signencrypthashapp.vo.EncoderVO;
-import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
-import se.omegapoint.web.signencrypthashapp.vo.HMacVO;
-import se.omegapoint.web.signencrypthashapp.vo.HashVO;
+import se.omegapoint.web.signencrypthashapp.vo.*;
 
 @RestController
 public class WebController {
 
     @RequestMapping(value = "/encode", method = RequestMethod.POST, headers = "Content-Type=application/json")
-    public ResponseEntity<Encoder> encode(@RequestBody EncoderVO encoderVO){
+    public ResponseEntity<Encoder> encode(@RequestBody EncodeVO encodeVO){
 
         Encoder encoder =null;
         try{
-            encoder = new Encoder(encoderVO);
+            encoder = new Encoder(encodeVO);
         } catch (Exception e){
             throw new GenericControlException(e.getMessage());
         }
         return new ResponseEntity<>(encoder, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/decode", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<Decoder> decode(@RequestBody EncodeVO encodeVO){
+
+        Decoder decoder =null;
+        try{
+            decoder = new Decoder(encodeVO);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+        return new ResponseEntity<>(decoder, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/hash", method = RequestMethod.POST, headers = "Content-Type=application/json")
@@ -54,11 +64,23 @@ public class WebController {
     }
 
     @RequestMapping(value = "/encrypt", method = RequestMethod.POST, headers = "Content-Type=application/json")
-    public ResponseEntity<CryptoHandler> calculate(@RequestBody EncryptVO aesVO){
+    public ResponseEntity<CryptoHandler> encrypt(@RequestBody CryptoVO cryptoVO){
 
         CryptoHandler CryptoHandler =null;
         try{
-            CryptoHandler = new CryptoHandler(aesVO);
+            CryptoHandler = new CryptoHandler(cryptoVO, true);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+        return new ResponseEntity<>(CryptoHandler, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/decrypt", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<CryptoHandler> decrypt(@RequestBody CryptoVO cryptoVO){
+
+        CryptoHandler CryptoHandler =null;
+        try{
+            CryptoHandler = new CryptoHandler(cryptoVO, false);
         } catch (Exception e){
             throw new GenericControlException(e.getMessage());
         }

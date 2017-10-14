@@ -2,7 +2,7 @@ package se.omegapoint.web.signencrypthashapp.service.encode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import se.omegapoint.web.signencrypthashapp.common.Utils;
-import se.omegapoint.web.signencrypthashapp.vo.EncoderVO;
+import se.omegapoint.web.signencrypthashapp.vo.EncodeVO;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -14,8 +14,8 @@ public class Encoder {
     String encoded;
     String compare;
 
-    public Encoder(EncoderVO encoderVO) throws UnsupportedEncodingException {
-        encode(encoderVO);
+    public Encoder(EncodeVO encodeVO) throws UnsupportedEncodingException {
+        encode(encodeVO);
     }
 
     public String getEncoded() {
@@ -26,21 +26,21 @@ public class Encoder {
         return compare;
     }
 
-    private void encode(EncoderVO encoderVO) throws UnsupportedEncodingException {
-        String type = encoderVO.getType();
+    private void encode(EncodeVO encodeVO) throws UnsupportedEncodingException {
+        String type = encodeVO.getType();
 
         if (Arrays.stream(Encoders.values()).anyMatch(s -> s.name().equals(type)) ) {
             System.out.println("Encoding to " + type);
 
 
             if (type.equalsIgnoreCase(Encoders.HEX.toString())) {
-                makeHexEncode(encoderVO);
+                makeHexEncode(encodeVO);
             } else if (type.equalsIgnoreCase(Encoders.BASE64.toString())) {
-                makeBase64Encode(encoderVO);
+                makeBase64Encode(encodeVO);
             } else if (type.equalsIgnoreCase(Encoders.URL.toString())) {
-                makeURLEncode(encoderVO);
+                makeURLEncode(encodeVO);
             } else if (type.equalsIgnoreCase(Encoders.ASCII.toString())) {
-                makeASCIIEncode(encoderVO);
+                makeASCIIEncode(encodeVO);
             }
         }else {
             throw new IllegalArgumentException(type+" encoding not supported");
@@ -48,52 +48,52 @@ public class Encoder {
 
     }
 
-    private void makeHexEncode(EncoderVO encoderVO) throws UnsupportedEncodingException {
-        String hex = Utils.bytesToHex(encoderVO.getText().getBytes("UTF-8"));
-        if(compare(encoderVO, hex) == null){
+    private void makeHexEncode(EncodeVO encodeVO) throws UnsupportedEncodingException {
+        String hex = Utils.bytesToHex(encodeVO.getText().getBytes("UTF-8"));
+        if(compare(encodeVO, hex) == null){
             System.out.println("Encoded value : " + hex);
             encoded = hex;
         }
     }
 
-    private void makeBase64Encode(EncoderVO encoderVO) throws UnsupportedEncodingException {
-        String base64String = Utils.toBase64String(encoderVO.getText().getBytes("UTF-8"));
-        if(compare(encoderVO, base64String) == null){
+    private void makeBase64Encode(EncodeVO encodeVO) throws UnsupportedEncodingException {
+        String base64String = Utils.toBase64String(encodeVO.getText().getBytes("UTF-8"));
+        if(compare(encodeVO, base64String) == null){
             System.out.println("Encoded value : " + base64String);
             encoded = base64String;
         }
     }
 
-    private void makeURLEncode(EncoderVO encoderVO) throws UnsupportedEncodingException {
-        String urlEncoded= URLEncoder.encode(encoderVO.getText(),"UTF-8");
-        if(compare(encoderVO, urlEncoded) == null){
+    private void makeURLEncode(EncodeVO encodeVO) throws UnsupportedEncodingException {
+        String urlEncoded= URLEncoder.encode(encodeVO.getText(),"UTF-8");
+        if(compare(encodeVO, urlEncoded) == null){
             System.out.println("Encoded value : " + urlEncoded);
             encoded = urlEncoded;
         }
 
     }
 
-    private void makeASCIIEncode(EncoderVO encoderVO) {
+    private void makeASCIIEncode(EncodeVO encodeVO) {
         StringBuilder ascii = new StringBuilder();
-        for (char c : encoderVO.getText().toCharArray()) {
+        for (char c : encodeVO.getText().toCharArray()) {
             ascii.append((int) c);
             ascii.append(" ");
         }
 
-        if(compare(encoderVO, ascii.toString().trim()) == null){
+        if(compare(encodeVO, ascii.toString().trim()) == null){
             System.out.println("Encoded value : " + ascii.toString().trim());
             encoded = ascii.toString().trim();
         }
     }
 
-    private String compare(EncoderVO encoderVO, String encodedValue) {
+    private String compare(EncodeVO encodeVO, String encodedValue) {
 
-        if(encoderVO.getCompareValue() == null || encoderVO.getCompareValue().isEmpty()){
+        if(encodeVO.getCompareValue() == null || encodeVO.getCompareValue().isEmpty()){
             compare = null;
         } else {
-            System.out.println(encoderVO.getType().toLowerCase()+" encoded value         : " + encodedValue);
-            System.out.println(encoderVO.getType().toLowerCase()+" encoded compare value : " + encoderVO.getCompareValue());
-            compare = Boolean.toString(encodedValue.equalsIgnoreCase(encoderVO.getCompareValue()));
+            System.out.println(encodeVO.getType().toLowerCase()+" encoded value         : " + encodedValue);
+            System.out.println(encodeVO.getType().toLowerCase()+" encoded compare value : " + encodeVO.getCompareValue());
+            compare = Boolean.toString(encodedValue.equalsIgnoreCase(encodeVO.getCompareValue()));
         }
 
         return compare;

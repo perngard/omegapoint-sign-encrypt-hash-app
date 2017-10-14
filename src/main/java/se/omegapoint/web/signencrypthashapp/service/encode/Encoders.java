@@ -1,7 +1,6 @@
 package se.omegapoint.web.signencrypthashapp.service.encode;
 
 public enum Encoders {
-    PLAIN("PLAIN"),
     BASE64("BASE64"),
     HEX("HEX"),
     URL("URL"),
