@@ -1,7 +1,4 @@
-package se.omegapoint.web.signencrypthashapp.hash;
-
-import java.util.Arrays;
-import java.util.List;
+package se.omegapoint.web.signencrypthashapp.service.hash;
 
 public enum Hashes {
     SHA1("SHA-1"),

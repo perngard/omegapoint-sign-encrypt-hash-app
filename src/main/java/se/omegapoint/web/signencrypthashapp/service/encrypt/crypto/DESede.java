@@ -1,7 +1,7 @@
-package se.omegapoint.web.signencrypthashapp.encrypt.crypto;
+package se.omegapoint.web.signencrypthashapp.service.encrypt.crypto;
 
-import se.omegapoint.web.signencrypthashapp.Utils;
-import se.omegapoint.web.signencrypthashapp.encrypt.CryptoUtils;
+import se.omegapoint.web.signencrypthashapp.common.Utils;
+import se.omegapoint.web.signencrypthashapp.service.encrypt.CryptoUtils;
 import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
 import se.omegapoint.web.signencrypthashapp.vo.ResponseVO;
 

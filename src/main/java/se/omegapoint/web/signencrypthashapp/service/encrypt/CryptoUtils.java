@@ -1,7 +1,7 @@
-package se.omegapoint.web.signencrypthashapp.encrypt;
+package se.omegapoint.web.signencrypthashapp.service.encrypt;
 
-import se.omegapoint.web.signencrypthashapp.TextType;
-import se.omegapoint.web.signencrypthashapp.Utils;
+import se.omegapoint.web.signencrypthashapp.common.TextType;
+import se.omegapoint.web.signencrypthashapp.common.Utils;
 import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
 import se.omegapoint.web.signencrypthashapp.vo.ResponseVO;
 
@@ -11,10 +11,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
 import java.security.*;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.List;
 
 public class CryptoUtils {

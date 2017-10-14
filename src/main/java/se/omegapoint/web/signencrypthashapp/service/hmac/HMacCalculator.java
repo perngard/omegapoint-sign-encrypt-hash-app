@@ -1,8 +1,8 @@
-package se.omegapoint.web.signencrypthashapp.hmac;
+package se.omegapoint.web.signencrypthashapp.service.hmac;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import se.omegapoint.web.signencrypthashapp.TextType;
-import se.omegapoint.web.signencrypthashapp.Utils;
+import se.omegapoint.web.signencrypthashapp.common.TextType;
+import se.omegapoint.web.signencrypthashapp.common.Utils;
 import se.omegapoint.web.signencrypthashapp.vo.HMacVO;
 
 import javax.crypto.Mac;

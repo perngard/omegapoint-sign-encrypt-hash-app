@@ -1,7 +1,6 @@
 package se.omegapoint.web.signencrypthashapp.vo;
 
-import org.springframework.web.bind.annotation.RequestParam;
-import se.omegapoint.web.signencrypthashapp.TextType;
+import se.omegapoint.web.signencrypthashapp.common.TextType;
 
 public class HashVO {
 

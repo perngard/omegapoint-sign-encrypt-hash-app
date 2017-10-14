@@ -1,10 +1,10 @@
-package se.omegapoint.web.signencrypthashapp.encrypt;
+package se.omegapoint.web.signencrypthashapp.service.encrypt;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import se.omegapoint.web.signencrypthashapp.encrypt.crypto.AES;
-import se.omegapoint.web.signencrypthashapp.encrypt.crypto.Blowfish;
-import se.omegapoint.web.signencrypthashapp.encrypt.crypto.DES;
-import se.omegapoint.web.signencrypthashapp.encrypt.crypto.DESede;
+import se.omegapoint.web.signencrypthashapp.service.encrypt.crypto.AES;
+import se.omegapoint.web.signencrypthashapp.service.encrypt.crypto.Blowfish;
+import se.omegapoint.web.signencrypthashapp.service.encrypt.crypto.DES;
+import se.omegapoint.web.signencrypthashapp.service.encrypt.crypto.DESede;
 import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
 import se.omegapoint.web.signencrypthashapp.vo.ResponseVO;
 

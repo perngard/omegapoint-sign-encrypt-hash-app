@@ -1,14 +1,8 @@
-package se.omegapoint.web.signencrypthashapp.encode;
+package se.omegapoint.web.signencrypthashapp.service.encode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import se.omegapoint.web.signencrypthashapp.Utils;
-import se.omegapoint.web.signencrypthashapp.encrypt.Cryptos;
-import se.omegapoint.web.signencrypthashapp.encrypt.crypto.AES;
-import se.omegapoint.web.signencrypthashapp.encrypt.crypto.Blowfish;
-import se.omegapoint.web.signencrypthashapp.encrypt.crypto.DES;
-import se.omegapoint.web.signencrypthashapp.encrypt.crypto.DESede;
+import se.omegapoint.web.signencrypthashapp.common.Utils;
 import se.omegapoint.web.signencrypthashapp.vo.EncoderVO;
-import se.omegapoint.web.signencrypthashapp.vo.ResponseVO;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

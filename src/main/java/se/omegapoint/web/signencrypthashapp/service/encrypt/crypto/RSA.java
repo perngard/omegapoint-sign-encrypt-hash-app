@@ -1,14 +1,10 @@
-package se.omegapoint.web.signencrypthashapp.encrypt.crypto;
+package se.omegapoint.web.signencrypthashapp.service.encrypt.crypto;
 
-import se.omegapoint.web.signencrypthashapp.Utils;
 import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
 
 import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package se.omegapoint.web.signencrypthashapp;
+package se.omegapoint.web.signencrypthashapp.common;
 
 public enum TextType {
     PLAIN("PLAIN"),

@@ -1,8 +1,8 @@
-package se.omegapoint.web.signencrypthashapp.hash;
+package se.omegapoint.web.signencrypthashapp.service.hash;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import se.omegapoint.web.signencrypthashapp.TextType;
-import se.omegapoint.web.signencrypthashapp.Utils;
+import se.omegapoint.web.signencrypthashapp.common.TextType;
+import se.omegapoint.web.signencrypthashapp.common.Utils;
 import se.omegapoint.web.signencrypthashapp.vo.HashVO;
 
 import java.nio.charset.StandardCharsets;

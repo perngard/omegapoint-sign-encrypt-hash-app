@@ -1,4 +1,4 @@
-package se.omegapoint.web.signencrypthashapp.encode;
+package se.omegapoint.web.signencrypthashapp.service.encode;
 
 public enum Encoders {
     PLAIN("PLAIN"),

@@ -1,4 +1,4 @@
-package se.omegapoint.web.signencrypthashapp;
+package se.omegapoint.web.signencrypthashapp.common;
 
 import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
 

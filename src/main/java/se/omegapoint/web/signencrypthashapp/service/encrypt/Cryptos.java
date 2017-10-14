@@ -1,4 +1,4 @@
-package se.omegapoint.web.signencrypthashapp.encrypt;
+package se.omegapoint.web.signencrypthashapp.service.encrypt;
 
 public enum Cryptos {
     AES("AES"),

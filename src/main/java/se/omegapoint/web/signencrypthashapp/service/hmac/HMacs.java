@@ -1,4 +1,4 @@
-package se.omegapoint.web.signencrypthashapp.hmac;
+package se.omegapoint.web.signencrypthashapp.service.hmac;
 
 public enum HMacs {
     HMACSHA1("HmacSHA1"),

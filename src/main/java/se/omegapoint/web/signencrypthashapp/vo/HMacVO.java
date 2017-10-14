@@ -1,6 +1,6 @@
 package se.omegapoint.web.signencrypthashapp.vo;
 
-import se.omegapoint.web.signencrypthashapp.TextType;
+import se.omegapoint.web.signencrypthashapp.common.TextType;
 
 public class HMacVO {
 
