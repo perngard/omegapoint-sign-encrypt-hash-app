@@ -3,17 +3,31 @@ package se.omegapoint.web.signencrypthashapp.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se.omegapoint.web.signencrypthashapp.encrypt.cryptoHandler;
+import se.omegapoint.web.signencrypthashapp.encode.Encoder;
+import se.omegapoint.web.signencrypthashapp.encrypt.CryptoHandler;
 import se.omegapoint.web.signencrypthashapp.error.ErrorResponse;
 import se.omegapoint.web.signencrypthashapp.exception.GenericControlException;
 import se.omegapoint.web.signencrypthashapp.hash.HashCalculator;
 import se.omegapoint.web.signencrypthashapp.hmac.HMacCalculator;
+import se.omegapoint.web.signencrypthashapp.vo.EncoderVO;
 import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
 import se.omegapoint.web.signencrypthashapp.vo.HMacVO;
 import se.omegapoint.web.signencrypthashapp.vo.HashVO;
 
 @RestController
 public class WebController {
+
+    @RequestMapping(value = "/encode", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<Encoder> encode(@RequestBody EncoderVO encoderVO){
+
+        Encoder encoder =null;
+        try{
+            encoder = new Encoder(encoderVO);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+        return new ResponseEntity<>(encoder, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/hash", method = RequestMethod.POST, headers = "Content-Type=application/json")
     public ResponseEntity<HashCalculator> calculate(@RequestBody HashVO hashVO){
@@ -40,15 +54,15 @@ public class WebController {
     }
 
     @RequestMapping(value = "/encrypt", method = RequestMethod.POST, headers = "Content-Type=application/json")
-    public ResponseEntity<cryptoHandler> calculate(@RequestBody EncryptVO aesVO){
+    public ResponseEntity<CryptoHandler> calculate(@RequestBody EncryptVO aesVO){
 
-        cryptoHandler cryptoHandler =null;
+        CryptoHandler CryptoHandler =null;
         try{
-            cryptoHandler = new cryptoHandler(aesVO);
+            CryptoHandler = new CryptoHandler(aesVO);
         } catch (Exception e){
             throw new GenericControlException(e.getMessage());
         }
-        return new ResponseEntity<>(cryptoHandler, HttpStatus.OK);
+        return new ResponseEntity<>(CryptoHandler, HttpStatus.OK);
     }
 
     @ExceptionHandler(GenericControlException.class)

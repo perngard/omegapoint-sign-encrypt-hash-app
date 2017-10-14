@@ -1,6 +1,7 @@
 package se.omegapoint.web.signencrypthashapp.vo;
 
 import org.springframework.web.bind.annotation.RequestParam;
+import se.omegapoint.web.signencrypthashapp.TextType;
 
 public class EncryptVO {
     String clearText;
@@ -10,6 +11,7 @@ public class EncryptVO {
     String padding;
     String secret;
     String initVector;
+    private String encryptedTextType = TextType.HEX.toString();
     String encryptedText;
 
     public String getClearText() {
@@ -74,5 +76,13 @@ public class EncryptVO {
 
     public void setEncryptedText(String encryptedText) {
         this.encryptedText = encryptedText;
+    }
+
+    public String getEncryptedTextType() {
+        return encryptedTextType;
+    }
+
+    public void setEncryptedTextType(String encryptedTextType) {
+        this.encryptedTextType = encryptedTextType;
     }
 }

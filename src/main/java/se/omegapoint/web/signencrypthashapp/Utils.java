@@ -26,7 +26,7 @@ public class Utils {
         return hexString.toString();
     }
 
-    public static byte[] HextoByte(String hex, int length){
+    public static byte[] hextoBytes(String hex, int length){
         byte[] bytes = new BigInteger(hex,16).toByteArray();
 
         if(bytes.length % 2 != 0) {
@@ -36,54 +36,11 @@ public class Utils {
         return bytes;
     }
 
-    public static String base64String(String hex){
-        return Base64.getEncoder().encodeToString(HextoByte(hex, hex.length()/2));
+    public static String hextoBase64String(String hex){
+        return Base64.getEncoder().encodeToString(hextoBytes(hex, hex.length()/2));
     }
 
-    public static boolean encrypt(EncryptVO encryptVO, Key secretKey, int ivSize, List<String> types, List<String> paddings) throws UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException {
-        boolean correct;
-        String algorithm = encryptVO.getAlgorithm();
-        String type = encryptVO.getType();
-        String padding = encryptVO.getPadding();
-        String initVector = encryptVO.getInitVector();
-        String secret = encryptVO.getSecret();
-        String encryptedText = encryptVO.getEncryptedText();
-        int keyLength = Integer.parseInt(encryptVO.getKeyLength());
-        String encryptionAlgorithm = algorithm+"/"+type+"/"+padding;
-
-        if (types.stream().anyMatch(s -> s.equals(type)) && paddings.stream().anyMatch(s -> s.equals(padding))) {
-
-            Cipher cipher = Cipher.getInstance(encryptionAlgorithm);
-            if (type.equalsIgnoreCase(types.get(0))){
-                cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-            } else{
-                byte[] iv = new byte[ivSize];
-                if(initVector.isEmpty()) {
-                    SecureRandom random = new SecureRandom();
-                    random.nextBytes(iv);
-                    System.out.println("IV: "+bytesToHex(iv));
-                    System.out.println("IV (base64): "+base64String(Utils.bytesToHex(iv)));
-                } else {
-                    System.out.println("IV: "+initVector);
-                    System.out.println("IV (base64): "+base64String(initVector));
-                    iv = Utils.HextoByte(initVector, ivSize);
-                }
-
-                cipher.init(Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(iv));
-
-            }
-
-            String encryptedString = bytesToHex(cipher.doFinal(encryptVO.getClearText().getBytes("UTF-8")));
-
-            correct = encryptedString.equalsIgnoreCase(encryptedText);
-            System.out.println("encryptedText: "+encryptedString);
-            System.out.println("Compared with: "+encryptedText);
-            System.out.println("encryptedText (base64): "+base64String(encryptedString));
-            System.out.println("Compared with (base64): "+base64String(encryptedText));
-        } else {
-            throw new IllegalArgumentException("No support for " + encryptionAlgorithm);
-        }
-
-        return correct;
+    public static String toBase64String(byte[] hex){
+        return Base64.getEncoder().encodeToString(hex);
     }
 }

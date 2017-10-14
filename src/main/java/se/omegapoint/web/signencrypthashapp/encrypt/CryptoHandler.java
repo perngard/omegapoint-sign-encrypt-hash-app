@@ -1,10 +1,12 @@
 package se.omegapoint.web.signencrypthashapp.encrypt;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import se.omegapoint.web.signencrypthashapp.encrypt.crypto.AES;
 import se.omegapoint.web.signencrypthashapp.encrypt.crypto.Blowfish;
 import se.omegapoint.web.signencrypthashapp.encrypt.crypto.DES;
 import se.omegapoint.web.signencrypthashapp.encrypt.crypto.DESede;
 import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
+import se.omegapoint.web.signencrypthashapp.vo.ResponseVO;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -14,46 +16,59 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.List;
 
-public class cryptoHandler {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CryptoHandler {
 
-    private final List<String> algorithms = Arrays.asList("AES", "DES", "3DES", "Blowfish");
+    String hex;
+    String base64;
+    String compare;
 
-    boolean correct = false;
-
-    public cryptoHandler(EncryptVO encryptVO) throws NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException {
+    public CryptoHandler(EncryptVO encryptVO) throws NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException {
         calculate(encryptVO);
     }
 
-    public boolean isCorrect() {
-        return correct;
+    public String getCompare() {
+        return compare;
+    }
+
+    public String getHex() {
+        return hex;
+    }
+
+    public String getBase64() {
+        return base64;
     }
 
     private void calculate(EncryptVO encryptVO) throws NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
+        ResponseVO respVO = new ResponseVO();
         String algorithm = encryptVO.getAlgorithm();
         String encryptionAlgorithm = algorithm+"/"+encryptVO.getType()+"/"+encryptVO.getPadding();
         String keyLength = encryptVO.getKeyLength();
 
-        if (algorithms.stream().anyMatch(s -> s.equals(algorithm)) ) {
+        if (Arrays.stream(Cryptos.values()).anyMatch(s -> s.name().equalsIgnoreCase(algorithm)) ) {
             System.out.println(algorithm + " encryption.");
             System.out.println("Ciper used is " + encryptionAlgorithm + " with a " + keyLength + " bits key.");
 
 
-            if (algorithm.equalsIgnoreCase(algorithms.get(0))) {
+            if (algorithm.equalsIgnoreCase(Cryptos.AES.toString())) {
                 AES encrypt = new AES(encryptVO);
-                correct = encrypt.isCorrect();
-            } else if (algorithm.equalsIgnoreCase(algorithms.get(1))) {
+                respVO = encrypt.getResponseVO();
+            } else if (algorithm.equalsIgnoreCase(Cryptos.DES.toString())) {
                 DES encrypt = new DES(encryptVO);
-                correct = encrypt.isCorrect();
-            } else if (algorithm.equalsIgnoreCase(algorithms.get(2))) {
-                encryptVO.setAlgorithm("DESede");
+                respVO = encrypt.getResponseVO();
+            } else if (algorithm.equalsIgnoreCase(Cryptos.DESede.toString())) {
                 DESede encrypt = new DESede(encryptVO);
-                correct = encrypt.isCorrect();
-            } else if (algorithm.equalsIgnoreCase(algorithms.get(3))) {
+                respVO = encrypt.getResponseVO();
+            } else if (algorithm.equalsIgnoreCase(Cryptos.BLOWFISH.toString())) {
                 Blowfish encrypt = new Blowfish(encryptVO);
-                correct = encrypt.isCorrect();
+                respVO = encrypt.getResponseVO();
             }
+
+            compare = respVO.getCompare();
+            hex = respVO.getHex();
+            base64 = respVO.getBase64();
+
         }else {
             throw new IllegalArgumentException(algorithm+" not supported");
         }

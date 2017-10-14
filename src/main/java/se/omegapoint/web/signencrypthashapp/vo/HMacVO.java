@@ -1,10 +1,13 @@
 package se.omegapoint.web.signencrypthashapp.vo;
 
+import se.omegapoint.web.signencrypthashapp.TextType;
+
 public class HMacVO {
 
     private String text;
     private String secret;
     private String algorithm;
+    private String compareType = TextType.HEX.toString();
     private String compareValue;
 
     public String getText() {
@@ -37,6 +40,14 @@ public class HMacVO {
 
     public void setCompareValue(String compareValue) {
         this.compareValue = compareValue;
+    }
+
+    public String getCompareType() {
+        return compareType;
+    }
+
+    public void setCompareType(String compareType) {
+        this.compareType = compareType;
     }
 
 }

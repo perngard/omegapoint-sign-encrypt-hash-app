@@ -1,7 +1,7 @@
 {
   "clearText" : "This is a test",
   "secret" : "OPerationHack",
-  "algorithm" : "3DES",
+  "algorithm" : "DESede",
   "keyLength" : "168",
   "type" : "CBC",
   "padding" : "PKCS5Padding",
