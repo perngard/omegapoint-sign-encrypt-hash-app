@@ -1,0 +1,9 @@
+{
+  "clearText" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "AES",
+  "keyLength" : "128",
+  "type" : "ECB",
+  "padding" : "PKCS5Padding",
+  "encryptedText" : "ebd12a2802029ee60b32545d7e32eb59"
+}

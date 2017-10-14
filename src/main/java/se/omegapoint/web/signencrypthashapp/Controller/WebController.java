@@ -1,33 +1,63 @@
 package se.omegapoint.web.signencrypthashapp.Controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import se.omegapoint.web.signencrypthashapp.encrypt.EncryptCalculator;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import se.omegapoint.web.signencrypthashapp.encrypt.cryptoHandler;
+import se.omegapoint.web.signencrypthashapp.error.ErrorResponse;
+import se.omegapoint.web.signencrypthashapp.exception.GenericControlException;
 import se.omegapoint.web.signencrypthashapp.hash.HashCalculator;
+import se.omegapoint.web.signencrypthashapp.hmac.HMacCalculator;
+import se.omegapoint.web.signencrypthashapp.vo.EncryptVO;
+import se.omegapoint.web.signencrypthashapp.vo.HMacVO;
+import se.omegapoint.web.signencrypthashapp.vo.HashVO;
 
 @RestController
 public class WebController {
 
-    @RequestMapping(value = "/hash", method = RequestMethod.GET)
-    public HashCalculator calculate(@RequestParam(value="text", defaultValue="This is a test") String text,
-                             @RequestParam(value="algorithm", defaultValue="SHA-256") String algorithm,
-                             @RequestParam(value="compare", defaultValue="c7be1ed902fb8dd4d48997c6452f5d7e509fbcdbe2808b16bcf4edce4c07d14e") String compare) {
+    @RequestMapping(value = "/hash", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<HashCalculator> calculate(@RequestBody HashVO hashVO){
 
-        return new HashCalculator(text, algorithm, compare);
+        HashCalculator hashCalculator =null;
+        try{
+            hashCalculator = new HashCalculator(hashVO);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+         return new ResponseEntity<>(hashCalculator, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/encrypt", method = RequestMethod.GET)
-    public EncryptCalculator calculate(@RequestParam(value="clearText", defaultValue="This is a test") String clearText,
-                                       @RequestParam(value="algorithm", defaultValue="AES") String algorithm,
-                                       @RequestParam(value="keyLength", defaultValue="128") String keyLength,
-                                       @RequestParam(value="type", defaultValue="ECB") String type,
-                                       @RequestParam(value="padding", defaultValue="PKCS5Padding") String padding,
-                                       @RequestParam(value="secret", defaultValue="OPerationHack") String secret,
-                                       @RequestParam(value="encryptedText", defaultValue="70939779d718f2a19bee2082fd436d55") String encryptedText) {
+    @RequestMapping(value = "/hmac", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<HMacCalculator> calculate(@RequestBody HMacVO hmacVO){
 
-        return new EncryptCalculator(clearText, algorithm, keyLength, type, padding, secret, encryptedText);
+        HMacCalculator hmacCalculator =null;
+        try{
+            hmacCalculator = new HMacCalculator(hmacVO);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+        return new ResponseEntity<>(hmacCalculator, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/encrypt", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<cryptoHandler> calculate(@RequestBody EncryptVO aesVO){
+
+        cryptoHandler cryptoHandler =null;
+        try{
+            cryptoHandler = new cryptoHandler(aesVO);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+        return new ResponseEntity<>(cryptoHandler, HttpStatus.OK);
+    }
+
+    @ExceptionHandler(GenericControlException.class)
+    public ResponseEntity<ErrorResponse> exceptionHandler(GenericControlException e) {
+        ErrorResponse error = new ErrorResponse();
+        error.setErrorCode(HttpStatus.PRECONDITION_FAILED.value());
+        error.setErrorMessage(e.getErrorMessage());
+
+        return new ResponseEntity<>(error, HttpStatus.OK);
     }
 
 }

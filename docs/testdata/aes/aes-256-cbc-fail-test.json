@@ -1,0 +1,10 @@
+{
+  "clearText" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "AES",
+  "keyLength" : "256",
+  "type" : "CBC",
+  "padding" : "PKCS5Padding",
+  "initVector" : "adf276ab885f1dcc02eb23b669e4329f",
+  "encryptedText" : "65650a1efb6a5db476e73a29f29b06de"
+}

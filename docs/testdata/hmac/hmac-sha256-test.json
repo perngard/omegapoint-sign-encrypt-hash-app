@@ -1,0 +1,6 @@
+{
+  "text" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "HmacSHA256",
+  "compareValue" : "f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588"
+}

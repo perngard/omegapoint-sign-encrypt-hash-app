@@ -1,0 +1,9 @@
+{
+  "clearText" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "DES",
+  "keyLength" : "56",
+  "type" : "ECB",
+  "padding" : "PKCS5Padding",
+  "encryptedText" : "99dec5c02cdaf145b8f52b76dc3e25c4"
+}

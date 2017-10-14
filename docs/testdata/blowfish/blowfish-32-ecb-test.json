@@ -1,0 +1,9 @@
+{
+  "clearText" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "Blowfish",
+  "keyLength" : "32",
+  "type" : "ECB",
+  "padding" : "PKCS5Padding",
+  "encryptedText" : "e3c80b585d1ffb7599393eb8e1ef8db7"
+}

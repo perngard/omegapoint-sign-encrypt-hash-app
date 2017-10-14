@@ -1,0 +1,10 @@
+{
+  "clearText" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "Blowfish",
+  "keyLength" : "32",
+  "type" : "CBC",
+  "padding" : "PKCS5Padding",
+  "initVector" : "adf276ab885f1dcc",
+  "encryptedText" : "219ff03c2f9380baae05465d9305fb72"
+}

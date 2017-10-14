@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>se.omegapoint.web</groupId>
-	<artifactId>sign-encrypt-hash-app</artifactId>
+	<artifactId>sign-encrypt-hashVO-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>sign-encrypt-hash-app</name>
-	<description>A web app for signature encrypt and hash verification</description>
+	<name>sign-encrypt-hashVO-app</name>
+	<description>A web app for signature encrypt and hashVO verification</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

@@ -1,0 +1,10 @@
+{
+  "clearText" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "3DES",
+  "keyLength" : "168",
+  "type" : "CBC",
+  "padding" : "PKCS5Padding",
+  "initVector" : "adf276ab885f1dcc",
+  "encryptedText" : "04236665102a224340565bcbc5a91a7b"
+}

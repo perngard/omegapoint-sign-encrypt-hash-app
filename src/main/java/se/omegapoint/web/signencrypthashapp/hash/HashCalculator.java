@@ -1,6 +1,7 @@
 package se.omegapoint.web.signencrypthashapp.hash;
 
 import se.omegapoint.web.signencrypthashapp.Utils;
+import se.omegapoint.web.signencrypthashapp.vo.HashVO;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -14,28 +15,34 @@ public class HashCalculator {
 
     boolean correct = false;
 
-    public HashCalculator(String text, String algorithm, String compareHash){
-        calculateHash(text, algorithm, compareHash);
+    public HashCalculator(HashVO hashVO) throws NoSuchAlgorithmException {
+        calculateHash(hashVO);
     }
 
     public boolean isCorrect() {
         return correct;
     }
 
-    private void calculateHash(String text, String algorithm, String compareHash){
+    private void calculateHash(HashVO hashVO) throws NoSuchAlgorithmException {
+
+        String algorithm = hashVO.getAlgorithm();
+        String compareValue = hashVO.getCompareValue();
 
         if (algorithms.stream().anyMatch(s -> s.equals(algorithm))) {
-            try {
-                MessageDigest md = MessageDigest.getInstance(algorithm);
-                byte[] hash = md.digest(text.getBytes(StandardCharsets.UTF_8));
-                String result = Utils.bytesToHex(hash);
 
-                correct = result.equalsIgnoreCase(compareHash);
+            System.out.println("algorithm: "+algorithm);
+            MessageDigest md = MessageDigest.getInstance(algorithm);
+            byte[] hash = md.digest(hashVO.getText().getBytes(StandardCharsets.UTF_8));
+            String result = Utils.bytesToHex(hash);
+            System.out.println("Hash         : "+result);
+            System.out.println("Compared with: "+compareValue);
+            System.out.println("Hash (base64)         : "+Utils.base64String(result));
+            System.out.println("Compared with (base64): "+Utils.base64String(compareValue));
 
-            } catch (NoSuchAlgorithmException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            correct = result.equalsIgnoreCase(compareValue);
+
+        } else {
+            throw new IllegalArgumentException("No support for " + algorithm);
         }
     }
 
