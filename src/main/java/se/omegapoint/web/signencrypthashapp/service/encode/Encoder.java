@@ -29,18 +29,18 @@ public class Encoder {
     private void encode(EncodeVO encodeVO) throws UnsupportedEncodingException {
         String type = encodeVO.getType();
 
-        if (Arrays.stream(Encoders.values()).anyMatch(s -> s.name().equals(type)) ) {
+        if (Arrays.stream(EncodingTypes.values()).anyMatch(s -> s.name().equals(type)) ) {
             System.out.println("Encoding to " + type);
 
 
-            if (type.equalsIgnoreCase(Encoders.HEX.toString())) {
-                makeHexEncode(encodeVO);
-            } else if (type.equalsIgnoreCase(Encoders.BASE64.toString())) {
-                makeBase64Encode(encodeVO);
-            } else if (type.equalsIgnoreCase(Encoders.URL.toString())) {
-                makeURLEncode(encodeVO);
-            } else if (type.equalsIgnoreCase(Encoders.ASCII.toString())) {
-                makeASCIIEncode(encodeVO);
+            if (type.equalsIgnoreCase(EncodingTypes.HEX.toString())) {
+                encodeHex(encodeVO);
+            } else if (type.equalsIgnoreCase(EncodingTypes.BASE64.toString())) {
+                encodeBase64(encodeVO);
+            } else if (type.equalsIgnoreCase(EncodingTypes.URL.toString())) {
+                encodeURL(encodeVO);
+            } else if (type.equalsIgnoreCase(EncodingTypes.ASCII.toString())) {
+                encodeASCII(encodeVO);
             }
         }else {
             throw new IllegalArgumentException(type+" encoding not supported");
@@ -48,52 +48,54 @@ public class Encoder {
 
     }
 
-    private void makeHexEncode(EncodeVO encodeVO) throws UnsupportedEncodingException {
+    private void encodeHex(EncodeVO encodeVO) throws UnsupportedEncodingException {
         String hex = Utils.bytesToHex(encodeVO.getText().getBytes("UTF-8"));
-        if(compare(encodeVO, hex) == null){
+        if(encodeVO.getCompareValue() == null){
             System.out.println("Encoded value : " + hex);
             encoded = hex;
+        } else {
+            compare(encodeVO.getCompareValue().replace(" ",""), hex, encodeVO.getType());
         }
     }
 
-    private void makeBase64Encode(EncodeVO encodeVO) throws UnsupportedEncodingException {
-        String base64String = Utils.toBase64String(encodeVO.getText().getBytes("UTF-8"));
-        if(compare(encodeVO, base64String) == null){
+    private void encodeBase64(EncodeVO encodeVO) throws UnsupportedEncodingException {
+        String base64String = Utils.bytesToBase64(encodeVO.getText().getBytes("UTF-8"));
+        if(compare(encodeVO.getCompareValue(), base64String, encodeVO.getType()) == null){
             System.out.println("Encoded value : " + base64String);
             encoded = base64String;
         }
     }
 
-    private void makeURLEncode(EncodeVO encodeVO) throws UnsupportedEncodingException {
+    private void encodeURL(EncodeVO encodeVO) throws UnsupportedEncodingException {
         String urlEncoded= URLEncoder.encode(encodeVO.getText(),"UTF-8");
-        if(compare(encodeVO, urlEncoded) == null){
+        if(compare(encodeVO.getCompareValue(), urlEncoded, encodeVO.getType()) == null){
             System.out.println("Encoded value : " + urlEncoded);
             encoded = urlEncoded;
         }
 
     }
 
-    private void makeASCIIEncode(EncodeVO encodeVO) {
+    private void encodeASCII(EncodeVO encodeVO) {
         StringBuilder ascii = new StringBuilder();
         for (char c : encodeVO.getText().toCharArray()) {
             ascii.append((int) c);
             ascii.append(" ");
         }
 
-        if(compare(encodeVO, ascii.toString().trim()) == null){
+        if(compare(encodeVO.getCompareValue(), ascii.toString().trim(), encodeVO.getType()) == null){
             System.out.println("Encoded value : " + ascii.toString().trim());
             encoded = ascii.toString().trim();
         }
     }
 
-    private String compare(EncodeVO encodeVO, String encodedValue) {
+    private String compare(String compareValue, String encodedValue, String type) {
 
-        if(encodeVO.getCompareValue() == null || encodeVO.getCompareValue().isEmpty()){
+        if(compareValue == null || compareValue.isEmpty()){
             compare = null;
         } else {
-            System.out.println(encodeVO.getType().toLowerCase()+" encoded value         : " + encodedValue);
-            System.out.println(encodeVO.getType().toLowerCase()+" encoded compare value : " + encodeVO.getCompareValue());
-            compare = Boolean.toString(encodedValue.equalsIgnoreCase(encodeVO.getCompareValue()));
+            System.out.println(type.toLowerCase()+" encoded value         : " + encodedValue);
+            System.out.println(type.toLowerCase()+" encoded compare value : " + compareValue);
+            compare = Boolean.toString(encodedValue.equalsIgnoreCase(compareValue));
         }
 
         return compare;

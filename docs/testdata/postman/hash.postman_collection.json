@@ -1,0 +1,570 @@
+{
+	"info": {
+		"name": "hash",
+		"_postman_id": "36ce5537-3dc4-83ef-c863-b527e0550ae9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "hash-md5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"ce114e4501d2f4e2dcea3e17b546f339\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"MD5\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-md5-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"MD5\",\n  \"compareValue\" : \"ce114e4501d2f4e2dcea3e17b546f339\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha1-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA1\",\n  \"compareValue\" : \"a54d88e06612d820bc3be72877c74f257b561b19\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha224-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA224\",\n  \"compareValue\" : \"ab3efc762195f138d5df56a425405f1d9528a545f9882eeb9c721485\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha256-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA256\",\n  \"compareValue\" : \"c7be1ed902fb8dd4d48997c6452f5d7e509fbcdbe2808b16bcf4edce4c07d14e\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha384-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA384\",\n  \"compareValue\" : \"a27c7667e58200d4c0688ea136968404a0da366b1a9fc19bb38a0c7a609a1eef2bcc82837f4f4d92031a66051494b38c\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha512-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA512\",\n  \"compareValue\" : \"a028d4f74b602ba45eb0a93c9a4677240dcf281a1a9322f183bd32f0bed82ec72de9c3957b2f4c9a1ccf7ed14f85d73498df38017e703d47ebb9f0b3bf116f69\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"a54d88e06612d820bc3be72877c74f257b561b19\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA1\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha224",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"ab3efc762195f138d5df56a425405f1d9528a545f9882eeb9c721485\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA224\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha256",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"c7be1ed902fb8dd4d48997c6452f5d7e509fbcdbe2808b16bcf4edce4c07d14e\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA256\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha384",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"a27c7667e58200d4c0688ea136968404a0da366b1a9fc19bb38a0c7a609a1eef2bcc82837f4f4d92031a66051494b38c\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA384\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha512",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"a028d4f74b602ba45eb0a93c9a4677240dcf281a1a9322f183bd32f0bed82ec72de9c3957b2f4c9a1ccf7ed14f85d73498df38017e703d47ebb9f0b3bf116f69\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA512\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha256-compare-wrongValue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA256\",\n  \"compareValue\" : \"c7be1ed9021b8dd4d48997c6452f5d7e509fbcdbe2808b16bcf4edce4c07d14e\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hash-sha256-compare-base64",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA1\",\n  \"compareValueType\" : \"BASE64\",\n  \"compareValue\" : \"pU2I4GYS2CC8O+cod8dPJXtWGxk=\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hash",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hash"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

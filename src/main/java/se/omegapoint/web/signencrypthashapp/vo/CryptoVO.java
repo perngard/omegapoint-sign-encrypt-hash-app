@@ -1,8 +1,12 @@
 package se.omegapoint.web.signencrypthashapp.vo;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import se.omegapoint.web.signencrypthashapp.common.TextType;
 
+@JsonAutoDetect
 public class CryptoVO {
+
     private String clearText;
     private String algorithm;
     private String keyLength;
@@ -32,10 +36,12 @@ public class CryptoVO {
         this.algorithm = algorithm;
     }
 
+    @JsonProperty(required = true)
     public String getKeyLength() {
         return keyLength;
     }
 
+    @JsonProperty(required = true)
     public void setKeyLength(String keyLength) {
         this.keyLength = keyLength;
     }

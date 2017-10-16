@@ -92,6 +92,7 @@ public class WebController {
         ErrorResponse error = new ErrorResponse();
         error.setErrorCode(HttpStatus.PRECONDITION_FAILED.value());
         error.setErrorMessage(e.getErrorMessage());
+        e.printStackTrace();
 
         return new ResponseEntity<>(error, HttpStatus.OK);
     }

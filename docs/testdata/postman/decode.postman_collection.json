@@ -1,0 +1,330 @@
+{
+	"info": {
+		"name": "decode",
+		"_postman_id": "a36018da-22eb-d06b-9c14-beac30d918fe",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "decode-ascii",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"encoded\" : \"84 104 105 115 32 105 115 32 97 32 116 101 115 116\",\n  \"type\" : \"ASCII\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/decode",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"decode"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "decode-ascii-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"encoded\" : \"84 104 105 115 32 105 115 32 97 32 116 101 115 116\",\n  \"type\" : \"ASCII\",\n  \"compareValue\" : \"This is a test\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/decode",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"decode"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "decode-base64-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"encoded\" : \"VGhpcyBpcyBhIHRlc3Q=\",\n  \"type\" : \"BASE64\",\n  \"compareValue\" : \"This is a test\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/decode",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"decode"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "decode-hex-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"encoded\" : \"5468697320697320612074657374\",\n  \"type\" : \"HEX\",\n  \"compareValue\" : \"This is a test\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/decode",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"decode"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "decode-url-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"encoded\" : \"This+is+a+test\",\n  \"type\" : \"URL\",\n  \"compareValue\" : \"This is a test\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/decode",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"decode"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "decode-url",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"encoded\" : \"This+is+a+test\",\n  \"type\" : \"URL\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/decode",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"decode"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "decode-hex",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"encoded\" : \"5468697320697320612074657374\",\n  \"type\" : \"HEX\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/decode",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"decode"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "decode-base64",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"encoded\" : \"VGhpcyBpcyBhIHRlc3Q=\",\n  \"type\" : \"BASE64\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/decode",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"decode"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

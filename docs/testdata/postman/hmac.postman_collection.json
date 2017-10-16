@@ -1,0 +1,410 @@
+{
+	"info": {
+		"name": "hmac",
+		"_postman_id": "e753bfb7-7796-cb90-a5a9-6229f3035626",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "hmac-md5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"d7b9d0fff601bbd3732f003081474868\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacMD5\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-md5-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacMD5\",\n  \"compareValue\" : \"d7b9d0fff601bbd3732f003081474868\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-sha1-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA1\",\n  \"compareValue\" : \"796d6ef25c0121a7a840b261f22b8160b625a5de\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-sha256-compare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA256\",\n  \"compareValue\" : \"f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-sha256",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA256\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-sha1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"796d6ef25c0121a7a840b261f22b8160b625a5de\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA1\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-sha1-base64",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA1\",\n  \"compareValueType\" : \"BASE64\",\n  \"compareValue\" : \"eW1u8lwBIaeoQLJh8iuBYLYlpd4=\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-sha1-compare-wrongValue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA1\",\n  \"compareValue\" : \"796d6ef2510121a7a840b261f22b8160b625a5de\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-sha256-secret-base64",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"T1BlcmF0aW9uSGFjaw==\",\n  \"secretType\" : \"BASE64\",\n  \"algorithm\" : \"HmacSHA256\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "hmac-sha256-secret-hex",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"4f5065726174696f6e4861636b\",\n  \"secretType\" : \"HEX\",\n  \"algorithm\" : \"HmacSHA256\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/hmac",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hmac"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,6 +1,7 @@
-package se.omegapoint.web.signencrypthashapp.service.crypto;
+package se.omegapoint.web.signencrypthashapp.service.signature;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import se.omegapoint.web.signencrypthashapp.service.crypto.CryptoAlgorithms;
 import se.omegapoint.web.signencrypthashapp.service.crypto.symmetric.AES;
 import se.omegapoint.web.signencrypthashapp.service.crypto.symmetric.Blowfish;
 import se.omegapoint.web.signencrypthashapp.service.crypto.symmetric.DES;
@@ -19,14 +20,14 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CryptoHandler {
+public class SignatureHandler {
 
     String text;
     String hex;
     String base64;
     String compare;
 
-    public CryptoHandler(CryptoVO cryptoVO,boolean encrypt) throws NoSuchPaddingException, IOException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException {
+    public SignatureHandler(CryptoVO cryptoVO, boolean encrypt) throws NoSuchPaddingException, IOException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException {
         if(encrypt){
             encrypt(cryptoVO);
         } else {

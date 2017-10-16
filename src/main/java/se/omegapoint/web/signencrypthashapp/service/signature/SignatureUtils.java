@@ -1,4 +1,4 @@
-package se.omegapoint.web.signencrypthashapp.service.crypto;
+package se.omegapoint.web.signencrypthashapp.service.signature;
 
 import se.omegapoint.web.signencrypthashapp.common.TextType;
 import se.omegapoint.web.signencrypthashapp.common.Utils;
@@ -11,15 +11,13 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class CryptoUtils {
+public class SignatureUtils {
 
     public static ResponseVO encrypt(CryptoVO cryptoVO, int divider, List<String> types, List<String> paddings) throws UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException {
         ResponseVO respVO;

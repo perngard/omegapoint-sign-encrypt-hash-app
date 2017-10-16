@@ -7,8 +7,9 @@ public class HMacVO {
     private String text;
     private String secret;
     private String algorithm;
-    private String compareType = TextType.HEX.toString();
     private String compareValue;
+    private String compareValueType = TextType.HEX.toString();
+    private String secretType = TextType.TEXT.toString();
 
     public String getText() {
         return text;
@@ -42,12 +43,20 @@ public class HMacVO {
         this.compareValue = compareValue;
     }
 
-    public String getCompareType() {
-        return compareType;
+    public String getCompareValueType() {
+        return compareValueType;
     }
 
-    public void setCompareType(String compareType) {
-        this.compareType = compareType;
+    public void setCompareValueType(String compareValueType) {
+        this.compareValueType = compareValueType;
+    }
+
+    public String getSecretType() {
+        return secretType;
+    }
+
+    public void setSecretType(String secretType) {
+        this.secretType = secretType;
     }
 
 }

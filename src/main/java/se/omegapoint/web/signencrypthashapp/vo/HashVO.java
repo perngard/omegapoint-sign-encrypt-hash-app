@@ -6,7 +6,7 @@ public class HashVO {
 
     private String text;
     private String algorithm;
-    private String compareType = TextType.HEX.toString();
+    private String compareValueType = TextType.HEX.toString();
     private String compareValue;
 
     public String getText() {
@@ -33,12 +33,12 @@ public class HashVO {
         this.compareValue = compareValue;
     }
 
-    public String getCompareType() {
-        return compareType;
+    public String getCompareValueType() {
+        return compareValueType;
     }
 
-    public void setCompareType(String compareType) {
-        this.compareType = compareType;
+    public void setCompareValueType(String compareValueType) {
+        this.compareValueType = compareValueType;
     }
 
 }

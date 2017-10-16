@@ -2,6 +2,7 @@ package se.omegapoint.web.signencrypthashapp.service.decode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import se.omegapoint.web.signencrypthashapp.common.Utils;
+import se.omegapoint.web.signencrypthashapp.service.encode.EncodingTypes;
 import se.omegapoint.web.signencrypthashapp.vo.EncodeVO;
 
 import java.io.UnsupportedEncodingException;
@@ -29,17 +30,17 @@ public class Decoder {
     private void encode(EncodeVO encodeVO) throws UnsupportedEncodingException {
         String type = encodeVO.getType();
 
-        if (Arrays.stream(Decoders.values()).anyMatch(s -> s.name().equals(type)) ) {
+        if (Arrays.stream(EncodingTypes.values()).anyMatch(s -> s.name().equals(type)) ) {
             System.out.println("Encoding to " + type);
 
 
-            if (type.equalsIgnoreCase(Decoders.HEX.toString())) {
+            if (type.equalsIgnoreCase(EncodingTypes.HEX.toString())) {
                 decodeHex(encodeVO);
-            } else if (type.equalsIgnoreCase(Decoders.BASE64.toString())) {
+            } else if (type.equalsIgnoreCase(EncodingTypes.BASE64.toString())) {
                 decodeBase64(encodeVO);
-            } else if (type.equalsIgnoreCase(Decoders.URL.toString())) {
-                urlDecode(encodeVO);
-            } else if (type.equalsIgnoreCase(Decoders.ASCII.toString())) {
+            } else if (type.equalsIgnoreCase(EncodingTypes.URL.toString())) {
+                decodeURL(encodeVO);
+            } else if (type.equalsIgnoreCase(EncodingTypes.ASCII.toString())) {
                 decodeASCII(encodeVO);
             }
         }else {
@@ -50,7 +51,7 @@ public class Decoder {
 
     private void decodeHex(EncodeVO encodeVO) throws UnsupportedEncodingException {
         String hex = encodeVO.getEncoded();
-        String plain = new String (Utils.hextoBytes(hex, hex.length()/2), "UTF-8");
+        String plain = new String (Utils.hexToBytes(hex), "UTF-8");
         if(compare(encodeVO, plain) == null){
             System.out.println("Decoded value : " + plain);
             decoded = plain;
@@ -58,14 +59,14 @@ public class Decoder {
     }
 
     private void decodeBase64(EncodeVO encodeVO) throws UnsupportedEncodingException {
-        String plain = Utils.base64Decoder(encodeVO.getEncoded());
+        String plain = new String(Utils.base64toBytes(encodeVO.getEncoded()),"UTF-8");
         if(compare(encodeVO, plain) == null){
             System.out.println("Decoded value : " + plain);
             decoded = plain;
         }
     }
 
-    private void urlDecode(EncodeVO encodeVO) throws UnsupportedEncodingException {
+    private void decodeURL(EncodeVO encodeVO) throws UnsupportedEncodingException {
         String plain= URLDecoder.decode(encodeVO.getEncoded(),"UTF-8");
         if(compare(encodeVO, plain) == null){
             System.out.println("Decoded value : " + plain);

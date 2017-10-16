@@ -1,0 +1,9 @@
+{
+  "clearText" : "This is a test",
+  "secret" : "OPerationHack",
+  "algorithm" : "RSA",
+  "keyLength" : "2048",
+  "type" : "ECB",
+  "padding" : "PKCS1Padding",
+  "cipherText" : "04236665102a224340565bcbc5a91a7b"
+}

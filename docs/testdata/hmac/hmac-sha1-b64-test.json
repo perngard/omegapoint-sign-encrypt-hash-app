@@ -1,7 +1,0 @@
-{
-  "text" : "This is a test",
-  "secret" : "OPerationHack",
-  "algorithm" : "HmacSHA1",
-  "compareType" : "BASE64",
-  "compareValue" : "eW1u8lwBIaeoQLJh8iuBYLYlpd4="
-}

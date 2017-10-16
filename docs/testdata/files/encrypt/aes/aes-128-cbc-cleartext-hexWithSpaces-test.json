@@ -1,0 +1,12 @@
+{
+  "clearText" : "54 68 69 73 20 69 73 20 61 20 74 65 73 74",
+  "clearTextType" : "HEX",
+  "secret" : "OPerationHack",
+  "algorithm" : "AES",
+  "keyLength" : "128",
+  "type" : "CBC",
+  "padding" : "PKCS5Padding",
+  "initVector" : "adf276ab885f1dcc02eb23b669e4329f",
+  "cipherText" : "7b1919e26a85aa457248203d9df088cd"
+
+}
