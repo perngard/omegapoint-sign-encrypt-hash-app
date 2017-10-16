@@ -1,0 +1,4408 @@
+{
+	"info": {
+		"name": "sign-encrypt-hash-app",
+		"_postman_id": "05073852-9196-39b2-4e07-9cc47e2e3b14",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "encode",
+			"item": [
+				{
+					"name": "encode-ascii",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"84 104 105 115 32 105 115 32 97 32 116 101 115 116\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"ASCII\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encode-ascii-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"ASCII\",\n  \"compareValue\" : \"84 104 105 115 32 105 115 32 97 32 116 101 115 116\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encode-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"VGhpcyBpcyBhIHRlc3Q=\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"BASE64\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encode-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"BASE64\",\n  \"compareValue\" : \"VGhpcyBpcyBhIHRlc3Q=\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encode-hex-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"HEX\",\n  \"compareValue\" : \"5468697320697320612074657374\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encode-hex",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"5468697320697320612074657374\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"HEX\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encode-url",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This+is+a+test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"URL\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encode-url-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"URL\",\n  \"compareValue\" : \"This+is+a+test\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encode-hex-compare-withSpaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"type\" : \"HEX\",\n  \"compareValue\" : \"54 68 69 73 20 69 73 20 61 20 74 65 73 74\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "decode",
+			"item": [
+				{
+					"name": "decode-ascii-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"84 104 105 115 32 105 115 32 97 32 116 101 115 116\",\n  \"type\" : \"ASCII\",\n  \"compareValue\" : \"This is a test\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decode-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"VGhpcyBpcyBhIHRlc3Q=\",\n  \"type\" : \"BASE64\",\n  \"compareValue\" : \"This is a test\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decode-hex-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"5468697320697320612074657374\",\n  \"type\" : \"HEX\",\n  \"compareValue\" : \"This is a test\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decode-url-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"This+is+a+test\",\n  \"type\" : \"URL\",\n  \"compareValue\" : \"This is a test\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decode-ascii",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"84 104 105 115 32 105 115 32 97 32 116 101 115 116\",\n  \"type\" : \"ASCII\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decode-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"VGhpcyBpcyBhIHRlc3Q=\",\n  \"type\" : \"BASE64\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decode-hex",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"5468697320697320612074657374\",\n  \"type\" : \"HEX\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decode-url",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"This+is+a+test\",\n  \"type\" : \"URL\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hash",
+			"item": [
+				{
+					"name": "hash-md5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ce114e4501d2f4e2dcea3e17b546f339\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"MD5\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-md5-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"MD5\",\n  \"compareValue\" : \"ce114e4501d2f4e2dcea3e17b546f339\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha1-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA1\",\n  \"compareValue\" : \"a54d88e06612d820bc3be72877c74f257b561b19\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha224-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA224\",\n  \"compareValue\" : \"ab3efc762195f138d5df56a425405f1d9528a545f9882eeb9c721485\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha256-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA256\",\n  \"compareValue\" : \"c7be1ed902fb8dd4d48997c6452f5d7e509fbcdbe2808b16bcf4edce4c07d14e\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha384-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA384\",\n  \"compareValue\" : \"a27c7667e58200d4c0688ea136968404a0da366b1a9fc19bb38a0c7a609a1eef2bcc82837f4f4d92031a66051494b38c\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha512-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA512\",\n  \"compareValue\" : \"a028d4f74b602ba45eb0a93c9a4677240dcf281a1a9322f183bd32f0bed82ec72de9c3957b2f4c9a1ccf7ed14f85d73498df38017e703d47ebb9f0b3bf116f69\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"a54d88e06612d820bc3be72877c74f257b561b19\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA1\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha224",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ab3efc762195f138d5df56a425405f1d9528a545f9882eeb9c721485\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA224\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha256",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"c7be1ed902fb8dd4d48997c6452f5d7e509fbcdbe2808b16bcf4edce4c07d14e\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA256\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha384",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"a27c7667e58200d4c0688ea136968404a0da366b1a9fc19bb38a0c7a609a1eef2bcc82837f4f4d92031a66051494b38c\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA384\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha512",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"a028d4f74b602ba45eb0a93c9a4677240dcf281a1a9322f183bd32f0bed82ec72de9c3957b2f4c9a1ccf7ed14f85d73498df38017e703d47ebb9f0b3bf116f69\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA512\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha256-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA256\",\n  \"compareValue\" : \"c7be1ed9021b8dd4d48997c6452f5d7e509fbcdbe2808b16bcf4edce4c07d14e\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hash-sha256-compare-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"algorithm\" : \"SHA1\",\n  \"compareValueType\" : \"BASE64\",\n  \"compareValue\" : \"pU2I4GYS2CC8O+cod8dPJXtWGxk=\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hash"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hmac",
+			"item": [
+				{
+					"name": "hmac-md5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"d7b9d0fff601bbd3732f003081474868\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacMD5\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-md5-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacMD5\",\n  \"compareValue\" : \"d7b9d0fff601bbd3732f003081474868\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-sha1-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA1\",\n  \"compareValue\" : \"796d6ef25c0121a7a840b261f22b8160b625a5de\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-sha256-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA256\",\n  \"compareValue\" : \"f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-sha256",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA256\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-sha1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"796d6ef25c0121a7a840b261f22b8160b625a5de\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA1\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-sha1-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA1\",\n  \"compareValueType\" : \"BASE64\",\n  \"compareValue\" : \"eW1u8lwBIaeoQLJh8iuBYLYlpd4=\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-sha1-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"HmacSHA1\",\n  \"compareValue\" : \"796d6ef2510121a7a840b261f22b8160b625a5de\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-sha256-secret-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"T1BlcmF0aW9uSGFjaw==\",\n  \"secretType\" : \"BASE64\",\n  \"algorithm\" : \"HmacSHA256\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hmac-sha256-secret-hex",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"f92bd7501dcd91c5e4f46709cb74a48c69f0680ca7a1740e7371315ea20f0588\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This is a test\",\n  \"secret\" : \"4f5065726174696f6e4861636b\",\n  \"secretType\" : \"HEX\",\n  \"algorithm\" : \"HmacSHA256\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/hmac",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hmac"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "encrypt",
+			"item": [
+				{
+					"name": "encrypt-3des-168-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DESede\",\n  \"keyLength\" : \"168\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"04236665f02a224340565bcbc5a91a7b\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-3des-168-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DESede\",\n  \"keyLength\" : \"168\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"39614b734daf05cf411cf85aa9353fb9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-3des-168-ecb-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DESede\",\n  \"keyLength\" : \"168\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"39614b734daf0acf411cf85aa9353fb9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-blowfish-32-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"32\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"219ff03c2f9380baae05465d9305fb72\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-blowfish-32-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"32\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"e3c80b585d1ffb7599393eb8e1ef8db7\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-blowfish-128-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"4e96a3c0f4951a4ce0e25c090963d9b9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-blowfish-128-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"b4a506dbd8f3365ea29f2f5773a5ff81\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-des-56-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DES\",\n  \"keyLength\" : \"56\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"596eeb1c4f5c68a99c0951c08b6dce5e\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-des-56-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DES\",\n  \"keyLength\" : \"56\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"99dec5c02cdaf145b8f52b76dc3225c4\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-des-56-ecb-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DES\",\n  \"keyLength\" : \"56\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"99dec5c07cdaf145b8f52b76dc3225c4\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-blowfish-128-cbc-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"4e96a3c0f4951a9ce0e25c090963d9b9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"ebd12a2802029ee60b30545d7e32eb59\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-192-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"ebd12a2802029ee60b30545d7e32eb59\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-256-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-192-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"ebd12a2802029ee60b30545d7e32eb59\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-256-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"20663e34d73ceb51a740541fabed7ce5\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc-secret-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"T1BlcmF0aW9uSGFjaw==\",\n  \"secretType\" : \"BASE64\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc-secret-hex-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"4f5065726174696f6e4861636b\",\n  \"secretType\" : \"HEX\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc-initvector-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVectorType\" : \"BASE64\",\n  \"initVector\" : \"rfJ2q4hfHcwC6yO2aeQynw==\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc-ciphertext-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherTextType\" : \"BASE64\",\n  \"cipherText\" : \"exkZ4mqFqkVySCA9nfCIzQ==\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc-cleartext-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"VGhpcyBpcyBhIHRlc3Q=\",\n  \"clearTextType\" : \"BASE64\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc-cleartext-hex-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"5468697320697320612074657374\",\n  \"clearTextType\" : \"HEX\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc-cleartext-hex-withSpaces-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"54 68 69 73 20 69 73 20 61 20 74 65 73 74\",\n  \"clearTextType\" : \"HEX\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-192-cbc-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"40a857c7aab388a67e1ce992cd7716fb\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-256-ecb-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"20663e34d73ceb51a744541fabed7ce5\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"7b1919e26a85aa457248203d9df088cd\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-128-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ebd12a2802029ee60b30545d7e32eb59\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-192-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"40a867c7aab388a67e1ce992cd7016fb\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-192-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"d4c39854d2254a8ceb580f16756c31ff\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-256-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"65650a1efb6a5db476e73829f29b06de\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-aes-256-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"20663e34d73ceb51a740541fabed7ce5\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "decrypt",
+			"description": "",
+			"item": [
+				{
+					"name": "decrypt-3des-168-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DESede\",\n  \"keyLength\" : \"168\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"04236665f02a224340565bcbc5a91a7b\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-3des-168-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DESede\",\n  \"keyLength\" : \"168\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"39614b734daf05cf411cf85aa9353fb9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-3des-168-ecb-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Given final block not properly padded\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DESede\",\n  \"keyLength\" : \"168\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"39614b734daf05cf411af85aa9353fb9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-des-56-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DES\",\n  \"keyLength\" : \"56\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"596eeb1c4f5c68a99c0951c08b6dce5e\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-des-56-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DES\",\n  \"keyLength\" : \"56\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"99dec5c02cdaf145b8f52b76dc3225c4\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-blowfish-32-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"32\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"219ff03c2f9380baae05465d9305fb72\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-blowfish-32-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"32\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"e3c80b585d1ffb7599393eb8e1ef8db7\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-blowfish-128-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"b4a506dbd8f3365ea29f2f5773a5ff81\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-blowfish-128-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"4e96a3c0f4951a4ce0e25c090963d9b9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-128-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-128-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"ebd12a2802029ee60b30545d7e32eb59\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-192-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"40a867c7aab388a67e1ce992cd7016fb\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-192-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"d4c39854d2254a8ceb580f16756c31ff\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-cbc-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-ecb-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"20663e34d73ceb51a740541fabed7ce5\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-3des-168-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DESede\",\n  \"keyLength\" : \"168\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"04236665f02a224340565bcbc5a91a7b\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-3des-168-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DESede\",\n  \"keyLength\" : \"168\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"39614b734daf05cf411cf85aa9353fb9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-des-56-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DES\",\n  \"keyLength\" : \"56\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"596eeb1c4f5c68a99c0951c08b6dce5e\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-des-56-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"DES\",\n  \"keyLength\" : \"56\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"99dec5c02cdaf145b8f52b76dc3225c4\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-blowfish-32-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"32\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"219ff03c2f9380baae05465d9305fb72\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-blowfish-32-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"32\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"e3c80b585d1ffb7599393eb8e1ef8db7\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-blowfish-128-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"b4a506dbd8f3365ea29f2f5773a5ff81\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-blowfish-128-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"Blowfish\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc\",\n  \"cipherText\" : \"4e96a3c0f4951a4ce0e25c090963d9b9\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-128-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"7b1919e26a85aa457248203d9df088cd\"  \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-128-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"ebd12a2802029ee60b30545d7e32eb59\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-192-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"d4c39854d2254a8ceb580f16756c31ff\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-192-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"192\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"40a867c7aab388a67e1ce992cd7016fb\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-cbc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-ecb",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"20663e34d73ceb51a740541fabed7ce5\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-cbc-secret-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"T1BlcmF0aW9uSGFjaw==\",\n  \"secretType\" : \"BASE64\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-cbc-secret-hex-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"4f5065726174696f6e4861636b\",\n  \"secretType\" : \"HEX\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-cbc-secret-hex",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"4f5065726174696f6e4861636b\",\n  \"secretType\" : \"HEX\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-cbc-secret-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"T1BlcmF0aW9uSGFjaw==\",\n  \"secretType\" : \"BASE64\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\" \n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-cbc-initvector-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVectorType\" : \"BASE64\",\n  \"initVector\" : \"rfJ2q4hfHcwC6yO2aeQynw==\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-cbc-initvector-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVectorType\" : \"BASE64\",\n  \"initVector\" : \"rfJ2q4hfHcwC6yO2aeQynw==\",\n  \"cipherText\" : \"65650a1efb6a5db476e73829f29b06de\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-128-cbc-ciphertext-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This is a test\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherTextType\" : \"BASE64\",\n  \"cipherText\" : \"exkZ4mqFqkVySCA9nfCIzQ==\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-128-cbc-ciphertext-base64-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"128\",\n  \"type\" : \"CBC\",\n  \"padding\" : \"PKCS5Padding\",\n  \"initVector\" : \"adf276ab885f1dcc02eb23b669e4329f\",\n  \"cipherTextType\" : \"BASE64\",\n  \"cipherText\" : \"exkZ4mqFqkVySCA9nfCIzQ==\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-aes-256-ecb-compare-wrongValue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Given final block not properly padded\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clearText\" : \"This is a test\",\n  \"secret\" : \"OPerationHack\",\n  \"algorithm\" : \"AES\",\n  \"keyLength\" : \"256\",\n  \"type\" : \"ECB\",\n  \"padding\" : \"PKCS5Padding\",\n  \"cipherText\" : \"20663e34d83ceb51a740541fabed7ce5\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
