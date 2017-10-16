@@ -8,6 +8,7 @@ import se.omegapoint.web.signencrypthashapp.vo.ResponseVO;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
@@ -43,9 +44,12 @@ public class HMacCalculator {
 
             System.out.println("algorithm: "+algorithm);
             Mac hmac = Mac.getInstance(algorithm);
-            byte[] secretBytes = convertToByte(hMacVO.getSecret(), hMacVO.getSecretType());
+            byte[] secretBytes = Utils.convertToByte(hMacVO.getSecret(), hMacVO.getSecretType());
             SecretKeySpec secretKey = new SecretKeySpec(secretBytes, "HmacSHA256");
             hmac.init(secretKey);
+            System.out.println("SecretKey " + Utils.printBytes(secretBytes));
+            System.out.println("SecretKey (hex)       : "+Utils.toString(secretBytes,TextType.HEX.toString()));
+            System.out.println("SecretKey (base64)    : "+Utils.toString(secretBytes,TextType.BASE64.toString()));
             byte[] hashBytes = hmac.doFinal(hMacVO.getText().getBytes(StandardCharsets.UTF_8));
 
             compare(hMacVO.getCompareValue(), hMacVO.getCompareValueType(), hashBytes);
@@ -58,52 +62,19 @@ public class HMacCalculator {
     private void compare(String compareValue, String compareValueType, byte[] calculatedBytes) throws UnsupportedEncodingException {
 
         if(compareValue == null || compareValue.isEmpty()){
-                hex = toString(calculatedBytes, TextType.HEX.toString());
-                base64 = toString(calculatedBytes, TextType.BASE64.toString());
+                hex = Utils.toString(calculatedBytes, TextType.HEX.toString());
+                base64 = Utils.toString(calculatedBytes, TextType.BASE64.toString());
 
                 System.out.println("Hex value        : " + hex);
                 System.out.println("Base64 value     : " + base64);
         } else {
-            byte[] compareValueBytes = convertToByte(compareValue, compareValueType);
+            byte[] compareValueBytes = Utils.convertToByte(compareValue, compareValueType);
             compare = Boolean.toString(Arrays.equals(calculatedBytes, compareValueBytes));
 
-            System.out.println("Calculated Value ("+compareValueType.toLowerCase()+")  : " + toString(compareValueBytes, compareValueType));
-            System.out.println("Compare Value    ("+compareValueType.toLowerCase()+")  : " + compareValue);
+            System.out.println("Calculated Value " + Utils.printBytes(calculatedBytes));
+            System.out.println("Compare Value    " + Utils.printBytes(compareValueBytes));
+            System.out.println("Calculated Value ("+compareValueType.toLowerCase()+")       : " + Utils.toString(calculatedBytes, compareValueType));
+            System.out.println("Compare Value    ("+compareValueType.toLowerCase()+")       : " + compareValue);
         }
     }
-
-    public static String toString(byte[] bytes, String type) throws UnsupportedEncodingException {
-        String convertedValue;
-
-        if (type.equalsIgnoreCase("TEXT")) {
-            convertedValue = Utils.byteToString(bytes);
-        } else if (type.equalsIgnoreCase("BASE64")) {
-            convertedValue = Utils.bytesToBase64(bytes);
-        } else if (type.equalsIgnoreCase("HEX")) {
-            convertedValue = Utils.bytesToHex(bytes);
-
-        } else {
-            throw new IllegalArgumentException(type + " not supported");
-        }
-
-        return convertedValue;
-    }
-
-    public static byte[] convertToByte(String value, String type) throws UnsupportedEncodingException {
-        byte[] convertedValue;
-
-        if (type.equalsIgnoreCase("TEXT")) {
-            convertedValue = value.getBytes("UTF-8");
-        } else if (type.equalsIgnoreCase("BASE64")) {
-            convertedValue = Utils.base64toBytes(value);
-        } else if (type.equalsIgnoreCase("HEX")) {
-            convertedValue = Utils.hexToBytes(value);
-
-        } else {
-            throw new IllegalArgumentException(type + " not supported");
-        }
-
-        return convertedValue;
-    }
-
 }

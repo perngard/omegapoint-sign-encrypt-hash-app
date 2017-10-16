@@ -11,6 +11,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,14 +42,15 @@ public class CryptoUtils {
                     SecureRandom random = new SecureRandom();
                     random.nextBytes(iv);
                 } else {
-                    iv = convertToByte(initVector, cryptoVO.getInitVectorType());
+                    iv = Utils.convertToByte(initVector, cryptoVO.getInitVectorType());
                 }
-                System.out.println("IV (hex)    : "+ toString(iv, TextType.HEX.toString()));
-                System.out.println("IV (base64) : "+ toString(iv, TextType.BASE64.toString()));
+                System.out.println("IV " + Utils.printBytes(iv));
+                System.out.println("IV (hex)       : "+ Utils.toString(iv, TextType.HEX.toString()));
+                System.out.println("IV (base64)    : "+ Utils.toString(iv, TextType.BASE64.toString()));
                 cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(cryptoVO, divider), new IvParameterSpec(iv));
             }
 
-            byte[] encryptedBytes = cipher.doFinal(convertToByte(cryptoVO.getClearText(),cryptoVO.getClearTextType()));
+            byte[] encryptedBytes = cipher.doFinal(Utils.convertToByte(cryptoVO.getClearText(),cryptoVO.getClearTextType()));
             respVO = compare(cryptoVO.getCipherText(), cryptoVO.getCipherTextType(), encryptedBytes);
 
         } else {
@@ -76,14 +78,15 @@ public class CryptoUtils {
                 if(initVector == null || initVector.isEmpty()) {
                     throw new IllegalArgumentException("InitVector cannot be empty");
                 } else {
-                    byte[] iv = convertToByte(initVector, cryptoVO.getInitVectorType());
-                    System.out.println("IV (hex)    : "+ toString(iv, TextType.HEX.toString()));
-                    System.out.println("IV (base64) : "+ toString(iv, TextType.BASE64.toString()));
+                    byte[] iv = Utils.convertToByte(initVector, cryptoVO.getInitVectorType());
+                    System.out.println("IV " + Utils.printBytes(iv));
+                    System.out.println("IV (hex)       : "+ Utils.toString(iv, TextType.HEX.toString()));
+                    System.out.println("IV (base64)    : "+ Utils.toString(iv, TextType.BASE64.toString()));
                     cipher.init(Cipher.DECRYPT_MODE, getSecretKey(cryptoVO, divider), new IvParameterSpec(iv));
                 }
             }
 
-            byte[] clearTextBytes = cipher.doFinal(convertToByte(cryptoVO.getCipherText(), cryptoVO.getCipherTextType()));
+            byte[] clearTextBytes = cipher.doFinal(Utils.convertToByte(cryptoVO.getCipherText(), cryptoVO.getCipherTextType()));
             respVO = compare(cryptoVO.getClearText(), cryptoVO.getClearTextType(), clearTextBytes);
 
         } else {
@@ -98,12 +101,13 @@ public class CryptoUtils {
         Key secretKey =  null;
 
         MessageDigest sha = null;
-        byte[] key = convertToByte(cryptoVO.getSecret(), cryptoVO.getSecretType());
+        byte[] key = Utils.convertToByte(cryptoVO.getSecret(), cryptoVO.getSecretType());
         sha = MessageDigest.getInstance("SHA-512");
         key = sha.digest(key);
         key = Arrays.copyOf(key, keyLength/divider);
-        System.out.println("SecretKey (hex)    : "+toString(key,TextType.HEX.toString()));
-        System.out.println("SecretKey (base64) : "+toString(key,TextType.BASE64.toString()));
+        System.out.println("SecretKey " + Utils.printBytes(key));
+        System.out.println("SecretKey (hex)       : "+Utils.toString(key,TextType.HEX.toString()));
+        System.out.println("SecretKey (base64)    : "+Utils.toString(key,TextType.BASE64.toString()));
         secretKey = new SecretKeySpec(key, cryptoVO.getAlgorithm());
 
         return secretKey;
@@ -115,58 +119,26 @@ public class CryptoUtils {
 
         if(compareValue == null || compareValue.isEmpty()){
             if(compareValueType.equalsIgnoreCase(TextType.TEXT.toString())) {
-                respVO.setText(toString(calculatedBytes, TextType.TEXT.toString()));
+                respVO.setText(Utils.toString(calculatedBytes, TextType.TEXT.toString()));
                 System.out.println("Text value        : " + respVO.getText());
             } else {
-                respVO.setHex(toString(calculatedBytes, TextType.HEX.toString()));
-                respVO.setBase64(toString(calculatedBytes, TextType.BASE64.toString()));
+                respVO.setHex(Utils.toString(calculatedBytes, TextType.HEX.toString()));
+                respVO.setBase64(Utils.toString(calculatedBytes, TextType.BASE64.toString()));
 
                 System.out.println("Hex value        : " + respVO.getHex());
                 System.out.println("Base64 value     : " + respVO.getBase64());
             }
         } else {
-            byte[] compareValueBytes = convertToByte(compareValue, compareValueType);
+            byte[] compareValueBytes = Utils.convertToByte(compareValue, compareValueType);
             respVO.setCompare(Boolean.toString(Arrays.equals(calculatedBytes, compareValueBytes)));
 
-            System.out.println("Calculated Value ("+compareValueType.toLowerCase()+")  : " + toString(compareValueBytes, compareValueType));
-            System.out.println("Compare Value    ("+compareValueType.toLowerCase()+")  : " + compareValue);
+            System.out.println("Calculated Value " + Utils.printBytes(calculatedBytes));
+            System.out.println("Compare Value    " + Utils.printBytes(compareValueBytes));
+            System.out.println("Calculated Value ("+compareValueType.toLowerCase()+")       : " + Utils.toString(calculatedBytes, compareValueType));
+            System.out.println("Compare Value    ("+compareValueType.toLowerCase()+")       : " + compareValue);
         }
 
         return respVO;
     }
 
-    public static String toString(byte[] bytes, String type) throws UnsupportedEncodingException {
-        String convertedValue;
-
-        if (type.equalsIgnoreCase("TEXT")) {
-            convertedValue = Utils.byteToString(bytes);
-        } else if (type.equalsIgnoreCase("BASE64")) {
-            convertedValue = Utils.bytesToBase64(bytes);
-        } else if (type.equalsIgnoreCase("HEX")) {
-            convertedValue = Utils.bytesToHex(bytes);
-
-        } else {
-            throw new IllegalArgumentException(type + " not supported");
-        }
-
-        return convertedValue;
-    }
-
-    public static byte[] convertToByte(String value, String type) throws UnsupportedEncodingException {
-        byte[] convertedValue;
-
-        if (type.equalsIgnoreCase("TEXT")) {
-            convertedValue = value.getBytes("UTF-8");
-        } else if (type.equalsIgnoreCase("BASE64")) {
-            convertedValue = Utils.base64toBytes(value);
-        } else if (type.equalsIgnoreCase("HEX")) {
-            convertedValue = Utils.hexToBytes(value);
-
-        } else {
-            throw new IllegalArgumentException(type + " not supported");
-        }
-        System.out.println("Converted IV Size : "+convertedValue.length);
-
-        return convertedValue;
-    }
 }

@@ -5,6 +5,7 @@ import se.omegapoint.web.signencrypthashapp.common.TextType;
 import se.omegapoint.web.signencrypthashapp.common.Utils;
 import se.omegapoint.web.signencrypthashapp.vo.HashVO;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -51,29 +52,25 @@ public class HashCalculator {
         }
     }
 
-    private void compare(HashVO hashVO, byte[] hashBytes) throws UnsupportedEncodingException {
+    private void compare(HashVO hashVO, byte[] calculatedBytes) throws UnsupportedEncodingException {
 
         if(hashVO.getCompareValue() == null || hashVO.getCompareValue().isEmpty()){
-            hex = Utils.bytesToHex(hashBytes);
-            base64 = Utils.bytesToBase64(hashBytes);
+            hex = Utils.bytesToHex(calculatedBytes);
+            base64 = Utils.bytesToBase64(calculatedBytes);
 
             System.out.println("Hex value        : " + hex);
             System.out.println("Base64 value     : " + base64);
         } else {
-            String calculatedHash;
-            if (hashVO.getCompareValueType().equalsIgnoreCase(TextType.BASE64.toString())){
-                calculatedHash = Utils.bytesToBase64(hashBytes);
-            } else {
-                calculatedHash = Utils.bytesToHex(hashBytes);
-            }
-            compare = Boolean.toString(calculatedHash.equalsIgnoreCase(hashVO.getCompareValue()));
+            byte[] compareValueBytes = Utils.convertToByte(hashVO.getCompareValue(), hashVO.getCompareValueType());
+            compare = Boolean.toString(Arrays.equals(calculatedBytes, compareValueBytes));
 
-            System.out.println("Hash ("+hashVO.getCompareValueType().toLowerCase()+")          : " + calculatedHash);
-            System.out.println("Compare Hash ("+hashVO.getCompareValueType().toLowerCase()+")  : " + hashVO.getCompareValue());
+            System.out.println("Calculated Value " + Utils.printBytes(calculatedBytes));
+            System.out.println("Compare Value    " + Utils.printBytes(compareValueBytes));
+            System.out.println("Hash ("+hashVO.getCompareValueType().toLowerCase()+")               : " + Utils.toString(calculatedBytes,hashVO.getCompareValueType()));
+            System.out.println("Compare Hash ("+hashVO.getCompareValueType().toLowerCase()+")       : " + hashVO.getCompareValue());
 
         }
 
     }
-
 
 }
