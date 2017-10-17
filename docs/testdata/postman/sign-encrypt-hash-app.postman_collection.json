@@ -134,7 +134,7 @@
 					"response": []
 				},
 				{
-					"name": "asn1-decode-base64-compsre",
+					"name": "asn1-decode-base64-compare",
 					"event": [
 						{
 							"listen": "test",
@@ -4829,7 +4829,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Body matches string\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"ewoiYWxnIiA6ICJub25lIiwKInR5cCIgOiAiSldUIgp9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.ZXdvaVlXeG5JaUE2SUNKdWIyNWxJaXdLSW5SNWNDSWdPaUFpU2xkVUlncDkuZXlKemRXSWlPaUl4TWpNME5UWTNPRGt3SWl3aWJtRnRaU0k2SWtwdmFHNGdSRzlsSWl3aVlXUnRhVzRpT25SeWRXVjk\");",
+									"    pm.expect(pm.response.text()).to.include(\"ewoiYWxnIiA6ICJub25lIiwKInR5cCIgOiAiSldUIgp9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.\");",
 									"});"
 								]
 							}
@@ -4870,7 +4870,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Body matches string\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"ewoiYWxnIiA6ICJub25lIiwKInR5cCIgOiAiSldUIgp9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.ZXdvaVlXeG5JaUE2SUNKdWIyNWxJaXdLSW5SNWNDSWdPaUFpU2xkVUlncDkuZXlKemRXSWlPaUl4TWpNME5UWTNPRGt3SWl3aWJtRnRaU0k2SWtwdmFHNGdSRzlsSWl3aVlXUnRhVzRpT25SeWRXVjk\");",
+									"    pm.expect(pm.response.text()).to.include(\"Unsecure JWT - No signature to verify\");",
 									"});"
 								]
 							}
@@ -4886,7 +4886,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"ewoiYWxnIiA6ICJub25lIiwKInR5cCIgOiAiSldUIgp9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.ZXdvaVlXeG5JaUE2SUNKdWIyNWxJaXdLSW5SNWNDSWdPaUFpU2xkVUlncDkuZXlKemRXSWlPaUl4TWpNME5UWTNPRGt3SWl3aWJtRnRaU0k2SWtwdmFHNGdSRzlsSWl3aVlXUnRhVzRpT25SeWRXVjk\"\n}"
+							"raw": "{\n    \"token\": \"ewoiYWxnIiA6ICJub25lIiwKInR5cCIgOiAiSldUIgp9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/jwt/verify",

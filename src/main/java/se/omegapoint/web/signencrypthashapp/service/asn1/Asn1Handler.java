@@ -10,6 +10,7 @@ import se.omegapoint.web.signencrypthashapp.vo.Asn1VO;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Asn1Handler {
@@ -30,8 +31,14 @@ public class Asn1Handler {
         byte[] data = Utils.convertToByte(asn1VO.getAsn1(), asn1VO.getType());
         ASN1InputStream stream = new ASN1InputStream(new ByteArrayInputStream(data));
         ASN1Primitive object = stream.readObject();
+        String calculatedValue = ASN1Dump.dumpAsString(object);
 
-        text = ASN1Dump.dumpAsString(object);
+        if(asn1VO.getCompareValue() == null || asn1VO.getCompareValue().isEmpty()) {
+            text = calculatedValue;
+        } else {
+            compare = Boolean.toString(calculatedValue.equalsIgnoreCase(asn1VO.getCompareValue()));
+        }
+
     }
 
     private void encode(Asn1VO asn1VO) {

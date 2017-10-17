@@ -60,7 +60,7 @@ public class JWTHandler {
             String signature;
 
             if(algorithm.equalsIgnoreCase(JWTAlgorithms.NONE.toString())) {
-                signature = base64UrlEncode(textToSign);
+                signature = "";
             } else {
                 Mac hmac = Mac.getInstance(String.valueOf(JWTAlgorithms.valueOf(algorithm)));
                 byte[] secretBytes = Utils.convertToByte(tokenVO.getSecret(), tokenVO.getSecretType());
@@ -86,7 +86,6 @@ public class JWTHandler {
         String textToSign = parts[0] + "." + parts[1];
         header = base64UrlDecode(parts[0]);
         data = base64UrlDecode(parts[1]);
-        byte[] signatureBytes = base64UrlByteDecode(parts[2]);
         String algorithm = getAlgorithmFromHeader(header);
 
         if (Arrays.stream(JWTAlgorithms.values()).anyMatch(s -> s.name().equalsIgnoreCase(algorithm))) {
@@ -94,8 +93,10 @@ public class JWTHandler {
             byte[] calculatedBytes;
 
             if(algorithm.equalsIgnoreCase(JWTAlgorithms.NONE.toString())) {
-                calculatedBytes = base64UrlByteDecode(textToSign);
+                verified = "Unsecure JWT - No signature to verify";
             } else {
+                byte[] signatureBytes = base64UrlByteDecode(parts[2]);
+
                 Mac hmac = Mac.getInstance(String.valueOf(JWTAlgorithms.valueOf(algorithm)));
                 byte[] secretBytes = Utils.convertToByte(tokenVO.getSecret(), tokenVO.getSecretType());
                 SecretKeySpec secretKey = new SecretKeySpec(secretBytes, "HmacSHA256");
@@ -105,12 +106,12 @@ public class JWTHandler {
                 System.out.println("SecretKey (base64)    : " + Utils.toString(secretBytes, TextType.BASE64.toString()));
 
                 calculatedBytes = hmac.doFinal(textToSign.getBytes(StandardCharsets.UTF_8));
+                System.out.println("Calculated Signature " + Utils.printBytes(calculatedBytes));
+                System.out.println("Given Signature      " + Utils.printBytes(signatureBytes));
 
+                verified = Boolean.toString(Arrays.equals(calculatedBytes, signatureBytes));
             }
-            System.out.println("Calculated Signature " + Utils.printBytes(calculatedBytes));
-            System.out.println("Given Signature      " + Utils.printBytes(signatureBytes));
 
-            verified = Boolean.toString(Arrays.equals(calculatedBytes, signatureBytes));
         } else {
             throw new IllegalArgumentException("No support for " + algorithm);
         }
