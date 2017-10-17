@@ -31,7 +31,7 @@ public class Asn1Handler {
         byte[] data = Utils.convertToByte(asn1VO.getAsn1(), asn1VO.getType());
         ASN1InputStream stream = new ASN1InputStream(new ByteArrayInputStream(data));
         ASN1Primitive object = stream.readObject();
-        String calculatedValue = ASN1Dump.dumpAsString(object);
+        String calculatedValue = ASN1Dump.dumpAsString(object, asn1VO.isVerbose());
 
         if(asn1VO.getCompareValue() == null || asn1VO.getCompareValue().isEmpty()) {
             text = calculatedValue;
