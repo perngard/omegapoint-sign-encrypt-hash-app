@@ -4,13 +4,14 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Base64;
 
 public class Utils {
 
     public static String byteToString(byte[] bytes) throws UnsupportedEncodingException {
-        return new String(bytes, "UTF-8");
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 
     public static String bytesToHex(byte[] bytes) {
@@ -51,7 +52,7 @@ public class Utils {
         byte[] convertedValue;
 
         if (type.equalsIgnoreCase(TextType.TEXT.toString())) {
-            convertedValue = value.getBytes("UTF-8");
+            convertedValue = value.getBytes(StandardCharsets.UTF_8);
         } else if (type.equalsIgnoreCase(TextType.BASE64.toString())) {
             convertedValue = Utils.base64toBytes(value);
         } else if (type.equalsIgnoreCase(TextType.HEX.toString())) {

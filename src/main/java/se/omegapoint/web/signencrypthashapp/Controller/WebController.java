@@ -3,6 +3,7 @@ package se.omegapoint.web.signencrypthashapp.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import se.omegapoint.web.signencrypthashapp.service.asn1.Asn1Handler;
 import se.omegapoint.web.signencrypthashapp.service.decode.Decoder;
 import se.omegapoint.web.signencrypthashapp.service.encode.Encoder;
 import se.omegapoint.web.signencrypthashapp.service.crypto.CryptoHandler;
@@ -10,6 +11,7 @@ import se.omegapoint.web.signencrypthashapp.error.ErrorResponse;
 import se.omegapoint.web.signencrypthashapp.exception.GenericControlException;
 import se.omegapoint.web.signencrypthashapp.service.hash.HashCalculator;
 import se.omegapoint.web.signencrypthashapp.service.hmac.HMacCalculator;
+import se.omegapoint.web.signencrypthashapp.service.jwt.JWTHandler;
 import se.omegapoint.web.signencrypthashapp.vo.*;
 
 @RestController
@@ -85,6 +87,54 @@ public class WebController {
             throw new GenericControlException(e.getMessage());
         }
         return new ResponseEntity<>(CryptoHandler, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/jwt/create", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<JWTHandler> create(@RequestBody JWTTokenVO tokenVO){
+
+        JWTHandler handler =null;
+        try{
+            handler = new JWTHandler(tokenVO,true);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+        return new ResponseEntity<>(handler, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/jwt/verify", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<JWTHandler> verify(@RequestBody JWTTokenVO tokenVO){
+
+        JWTHandler handler =null;
+        try{
+            handler = new JWTHandler(tokenVO,false);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+        return new ResponseEntity<>(handler, HttpStatus.OK);
+    }
+
+//    @RequestMapping(value = "/asn1/encode", method = RequestMethod.POST, headers = "Content-Type=application/json")
+//    public ResponseEntity<Asn1Handler> encode(@RequestBody Asn1VO asn1VO){
+//
+//        Asn1Handler handler =null;
+//        try{
+//            handler = new Asn1Handler(asn1VO,false);
+//        } catch (Exception e){
+//            throw new GenericControlException(e.getMessage());
+//        }
+//        return new ResponseEntity<>(handler, HttpStatus.OK);
+//    }
+
+    @RequestMapping(value = "/asn1/decode", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public ResponseEntity<Asn1Handler> decode(@RequestBody Asn1VO asn1VO){
+
+        Asn1Handler handler =null;
+        try{
+            handler = new Asn1Handler(asn1VO,true);
+        } catch (Exception e){
+            throw new GenericControlException(e.getMessage());
+        }
+        return new ResponseEntity<>(handler, HttpStatus.OK);
     }
 
     @ExceptionHandler(GenericControlException.class)

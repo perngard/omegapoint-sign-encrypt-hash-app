@@ -42,6 +42,8 @@ public class Decoder {
                 decodeURL(encodeVO);
             } else if (type.equalsIgnoreCase(EncodingTypes.ASCII.toString())) {
                 decodeASCII(encodeVO);
+            } else if (type.equalsIgnoreCase(EncodingTypes.BINARY.toString())) {
+                decodeBinary(encodeVO);
             }
         }else {
             throw new IllegalArgumentException(type+" encoding not supported");
@@ -79,6 +81,20 @@ public class Decoder {
         StringBuilder plain = new StringBuilder();
         for (String s:encodeVO.getEncoded().split(" ")) {
             int number = Integer.parseInt(s);
+            char c = (char)number;
+            plain.append(c);
+        }
+
+        if(compare(encodeVO, plain.toString()) == null){
+            System.out.println("Decoded value : " + plain.toString());
+            decoded = plain.toString();
+        }
+    }
+
+    private void decodeBinary(EncodeVO encodeVO) {
+        StringBuilder plain = new StringBuilder();
+        for (String s:encodeVO.getEncoded().split(" ")) {
+            int number = Integer.parseInt(s, 2);
             char c = (char)number;
             plain.append(c);
         }

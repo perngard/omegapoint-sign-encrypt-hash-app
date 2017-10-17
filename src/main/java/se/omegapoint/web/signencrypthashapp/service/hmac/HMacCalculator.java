@@ -4,11 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import se.omegapoint.web.signencrypthashapp.common.TextType;
 import se.omegapoint.web.signencrypthashapp.common.Utils;
 import se.omegapoint.web.signencrypthashapp.vo.HMacVO;
-import se.omegapoint.web.signencrypthashapp.vo.ResponseVO;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
@@ -40,7 +38,7 @@ public class HMacCalculator {
     private void calculateHMac(HMacVO hMacVO) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
         String algorithm = hMacVO.getAlgorithm();
 
-        if (Arrays.stream(HMacAlgortihms.values()).anyMatch(s -> s.name().equalsIgnoreCase(algorithm))) {
+        if (Arrays.stream(HMacAlgorithms.values()).anyMatch(s -> s.name().equalsIgnoreCase(algorithm))) {
 
             System.out.println("algorithm: "+algorithm);
             Mac hmac = Mac.getInstance(algorithm);

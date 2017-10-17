@@ -5,6 +5,7 @@ public enum EncodingTypes {
     HEX("HEX"),
     URL("URL"),
     ASCII("ASCII"),
+    BINARY("BINARY"),
     ;
 
     private final String hash;

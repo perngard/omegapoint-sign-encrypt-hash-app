@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import se.omegapoint.web.signencrypthashapp.common.Utils;
 import se.omegapoint.web.signencrypthashapp.vo.EncodeVO;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Arrays;
@@ -41,6 +42,8 @@ public class Encoder {
                 encodeURL(encodeVO);
             } else if (type.equalsIgnoreCase(EncodingTypes.ASCII.toString())) {
                 encodeASCII(encodeVO);
+            } else if (type.equalsIgnoreCase(EncodingTypes.BINARY.toString())) {
+                encodeBinary(encodeVO);
             }
         }else {
             throw new IllegalArgumentException(type+" encoding not supported");
@@ -88,6 +91,22 @@ public class Encoder {
         }
     }
 
+    private void encodeBinary(EncodeVO encodeVO) {
+        StringBuilder binary = new StringBuilder();
+        for (char c : encodeVO.getText().toCharArray()) {
+            binary.append(toBinaryString((int) c));
+            binary.append(" ");
+        }
+
+        if(encodeVO.getCompareValue() == null){
+            System.out.println("Encoded value : " + binary.toString());
+            encoded = binary.toString().trim();
+        } else {
+            compare(encodeVO.getCompareValue(), binary.toString().trim(), encodeVO.getType());
+        }
+
+    }
+
     private String compare(String compareValue, String encodedValue, String type) {
 
         if(compareValue == null || compareValue.isEmpty()){
@@ -101,5 +120,12 @@ public class Encoder {
         return compare;
     }
 
+    private static String toBinaryString(int binaryNumber) {
+        String binaryString = Integer.toBinaryString(binaryNumber);
+        while (binaryString.length() < 8) {
+            binaryString = "0" + binaryString;
+        }
+        return binaryString;
+    }
 
 }

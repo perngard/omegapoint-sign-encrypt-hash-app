@@ -7,6 +7,217 @@
 	},
 	"item": [
 		{
+			"name": "asn1",
+			"description": "",
+			"item": [
+				{
+					"name": "asn1-decode-hex",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ObjectIdentifier(1.2.840.113549.1.1.1)\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"asn1\" : \"30 81 9f 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 81 8d 00 30 81 89 02 81 81 00 dd 95 ab 51 8d 18 e8 82 8d d6 a2 38 06 1c 51 d8 2e e8 1d 51 60 18 f6 24 77 7f 2e 1a ad 63 40 d4 aa 12 f2 45 70 df 77 09 89 b5 eb f1 bb f0 50 05 29 6a b0 b0 96 f7 5b 1f a7 6f 10 e7 e8 bb 4f e0 08 54 2c 1d 47 d0 ad 20 ef f8 cb 92 50 c0 1e f2 3c ca 13 8a 96 fa 32 be c5 05 3d 6b 4d c6 52 72 87 92 49 5e f9 0d 29 5f f8 3a 8d 76 7b af 5f f1 00 ae 43 a3 69 10 f9 7e 71 2b d7 22 a5 18 04 2b 02 03 01 00 01\",\n  \"type\" : \"HEX\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/asn1/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asn1",
+								"decode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "asn1-decode-base64",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ObjectIdentifier(1.2.840.113549.1.1.1)\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"asn1\" : \"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW+jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/asn1/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asn1",
+								"decode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "asn1-decode-hex-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"asn1\" : \"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW+jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB\",\n  \"compareValue\" : \"Sequence\\n    Sequence\\n        ObjectIdentifier(1.2.840.113549.1.1.1)\\n        NULL\\n    DER Bit String[140, 0] \\n\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/asn1/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asn1",
+								"decode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "asn1-decode-base64-compsre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"asn1\" : \"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW+jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB\",\n  \"compareValue\" : \"Sequence\\n    Sequence\\n        ObjectIdentifier(1.2.840.113549.1.1.1)\\n        NULL\\n    DER Bit String[140, 0] \\n\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/asn1/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asn1",
+								"decode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "asn1-decode-base64-verbose",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ObjectIdentifier(1.2.840.113549.1.1.1)\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"asn1\" : \"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW+jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB\",\n  \"verbose\" : true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/asn1/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asn1",
+								"decode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "encode",
 			"item": [
 				{
@@ -359,6 +570,86 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "encode-binary",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"01010100 01101000 01101001 01110011\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This\",\n  \"type\" : \"BINARY\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "encode-binary-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\" : \"This\",\n  \"type\" : \"BINARY\",\n  \"compareValue\" : \"01010100 01101000 01101001 01110011\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/encode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"encode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -674,6 +965,86 @@
 								"decode"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "decode-binary-compare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"01010100 01101000 01101001 01110011\",\n  \"type\" : \"BINARY\",\n  \"compareValue\" : \"This\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "decode-binary",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"This\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\" : \"01010100 01101000 01101001 01110011\",\n  \"type\" : \"BINARY\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/decode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"decode"
+							]
+						},
+						"description": ""
 					},
 					"response": []
 				}
@@ -4396,6 +4767,176 @@
 							],
 							"path": [
 								"decrypt"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "jwt",
+			"description": "",
+			"item": [
+				{
+					"name": "jwt-hmac-256-create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ewoiYWxnIiA6ICJIUzI1NiIsCiJ0eXAiIDogIkpXVCIKfQ.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.KxVQKwJvPv2BlRC7PLA1ZgOOj0T4pDn7sRvkEth4bi0\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"algorithm\" : \"HS256\",\n  \"secret\" : \"secret\",\n  \"data\" : \"{\\\"sub\\\":\\\"1234567890\\\",\\\"name\\\":\\\"John Doe\\\",\\\"admin\\\":true}\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/jwt/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jwt",
+								"create"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "jwt-none-create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ewoiYWxnIiA6ICJub25lIiwKInR5cCIgOiAiSldUIgp9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.ZXdvaVlXeG5JaUE2SUNKdWIyNWxJaXdLSW5SNWNDSWdPaUFpU2xkVUlncDkuZXlKemRXSWlPaUl4TWpNME5UWTNPRGt3SWl3aWJtRnRaU0k2SWtwdmFHNGdSRzlsSWl3aVlXUnRhVzRpT25SeWRXVjk\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"algorithm\" : \"none\",\n  \"data\" : \"{\\\"sub\\\":\\\"1234567890\\\",\\\"name\\\":\\\"John Doe\\\",\\\"admin\\\":true}\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/jwt/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jwt",
+								"create"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "jwt-none-verify",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ewoiYWxnIiA6ICJub25lIiwKInR5cCIgOiAiSldUIgp9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.ZXdvaVlXeG5JaUE2SUNKdWIyNWxJaXdLSW5SNWNDSWdPaUFpU2xkVUlncDkuZXlKemRXSWlPaUl4TWpNME5UWTNPRGt3SWl3aWJtRnRaU0k2SWtwdmFHNGdSRzlsSWl3aVlXUnRhVzRpT25SeWRXVjk\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"ewoiYWxnIiA6ICJub25lIiwKInR5cCIgOiAiSldUIgp9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.ZXdvaVlXeG5JaUE2SUNKdWIyNWxJaXdLSW5SNWNDSWdPaUFpU2xkVUlncDkuZXlKemRXSWlPaUl4TWpNME5UWTNPRGt3SWl3aWJtRnRaU0k2SWtwdmFHNGdSRzlsSWl3aVlXUnRhVzRpT25SeWRXVjk\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/jwt/verify",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jwt",
+								"verify"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "jwt-hmac-256-verify",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"secret\" : \"secret\",\n  \"token\" : \"ewoiYWxnIiA6ICJIUzI1NiIsCiJ0eXAiIDogIkpXVCIKfQ.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.KxVQKwJvPv2BlRC7PLA1ZgOOj0T4pDn7sRvkEth4bi0\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/jwt/verify",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jwt",
+								"verify"
 							]
 						},
 						"description": ""
